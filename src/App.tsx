@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
 
-function App() {
+import ViewHeader from './components/ViewHeader';
+import Welcome from './views/Welcome';
+
+const useStyles = makeStyles(theme => ({
+  mobileView: {
+    width: '100%',
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: grey[200],
+    alignItems: 'center',
+    '& > div': {
+      width: 480,
+      height: 896,
+      backgroundColor: theme.palette.background.paper,
+      [theme.breakpoints.down("xs")]: {
+        width: '100%',
+        height: '100vh',
+      }
+    }
+  }
+}));
+
+const App: React.FC = () => {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.mobileView}>
+      <div>
+        <ViewHeader />
+        <Welcome />
+      </div>
     </div>
   );
 }
