@@ -4,6 +4,9 @@ import { grey } from '@material-ui/core/colors';
 
 import ViewHeader from './components/ViewHeader';
 import Welcome from './views/Welcome';
+import ValueProposition from './views/ValueProposition';
+import TheTeam from './views/TheTeam';
+import RememberThis from './views/RememberThis';
 
 const useStyles = makeStyles(theme => ({
   mobileView: {
@@ -32,7 +35,10 @@ const App: React.FC = () => {
     <div className={classes.mobileView}>
       <div>
         <ViewHeader />
-        <Welcome />
+        {/* <Welcome /> */}
+        {/* <ValueProposition /> */}
+        {/* <TheTeam /> */}
+        <RememberThis />
       </div>
     </div>
   );

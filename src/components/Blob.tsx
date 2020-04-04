@@ -1,39 +1,48 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core';
-import { orange } from '@material-ui/core/colors'
+import { makeStyles, useTheme, Theme } from '@material-ui/core';
 
-type MUIColor = keyof typeof orange;
-
-interface BlobStyleProps {
-    size: number;
-    color: { [key in MUIColor]: string }
-}
-
-const useStyles = makeStyles<Theme, BlobStyleProps>(theme => ({
-    blob: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        color: theme.palette.common.white,
-        backgroundColor: ({ color }) => color[400],
-        width: ({ size }) => theme.spacing(size),
-        height: ({ size }) => theme.spacing(size),
-        borderRadius: '50%',
-        whiteSpace: 'pre'
-    }
+const useStyles = makeStyles<Theme, { size: number, color: string }>(theme => ({
+  circle: {
+    cursor: 'pointer',
+  },
+  text: {
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    color: ({ color }) => theme.palette.getContrastText(color),
+    whiteSpace: 'pre',
+    pointerEvents: 'none',
+    bottom: ({ size }) => size,
+    marginBottom: ({ size }) => -size,
+    height: ({ size }) => size,
+    width: ({ size }) => size,
+  }
 }));
 
+interface BlobProps {
+    size: number;
+    color: string;
+    clickable?: boolean;
+}
 
-const Blob: React.FC<BlobStyleProps> = ({ children, size, color }) => {
+const Blob: React.FC<BlobProps> = ({ children, color, ...props}) => {
+  const theme = useTheme();
+  const size = theme.spacing(props.size);
+  
   const classes = useStyles({ size, color });
 
-
   return (
-    <div className={classes.blob}>
-        {children}
+    <div>
+      <svg height={size} width={size}>
+        <circle cx={size/2} cy={size/2} r={size/2} fill={color} cursor={props.clickable ? 'pointer' : undefined}/>
+      </svg> 
+        <div className={classes.text}>
+          {children}
+        </div>
     </div>
-  );
+  )
 }
 
 export default Blob;

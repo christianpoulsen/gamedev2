@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme => ({
     },
     personBlob: {
         display: 'flex',
-        cursor: 'pointer',
     }
 }));
 
@@ -37,14 +36,14 @@ const Welcome: React.FC = () => {
   return (
     <div className={classes.container}>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange} size={44}>
+            <Blob color={orange[400]} size={44}>
                 {welcomeText}
             </Blob>
         </Box>
         <Box pt={4}>
             <Box className={classes.personBlob} justifyContent="flex-end">
                 <Box display="flex" justifyContent="center" flexDirection="column">
-                        <Blob color={pink} size={22} >
+                        <Blob color={pink[400]} size={22} clickable >
                             img
                         </Blob>
 
@@ -53,7 +52,7 @@ const Welcome: React.FC = () => {
             </Box>
             <Box className={classes.personBlob} justifyContent="flex-start">
                 <Box display="flex" justifyContent="center" flexDirection="column" mt={-11}>
-                    <Blob color={blue} size={22}>
+                    <Blob color={blue[400]} size={22} clickable>
                     img
                     </Blob>
                     <Typography variant="body1" align="center">Andy</Typography>
