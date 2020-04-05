@@ -2,8 +2,11 @@ import React from 'react';
 import { makeStyles, useTheme, Theme } from '@material-ui/core';
 
 const useStyles = makeStyles<Theme, { size: number, color: string }>(theme => ({
-  circle: {
-    cursor: 'pointer',
+  container: {
+    position: 'relative',
+  },
+  svg: {
+    position: 'absolute',
   },
   text: {
     position: 'relative',
@@ -13,30 +16,30 @@ const useStyles = makeStyles<Theme, { size: number, color: string }>(theme => ({
     textAlign: 'center',
     color: ({ color }) => theme.palette.getContrastText(color),
     whiteSpace: 'pre',
-    pointerEvents: 'none',
-    bottom: ({ size }) => size,
-    marginBottom: ({ size }) => -size,
     height: ({ size }) => size,
     width: ({ size }) => size,
+    pointerEvents: 'none',
   }
 }));
 
 interface BlobProps {
     size: number;
     color: string;
-    clickable?: boolean;
+    onClick?: () => void;
+    style?: React.CSSProperties;
+    className?: string;
 }
 
-const Blob: React.FC<BlobProps> = ({ children, color, ...props}) => {
+const Blob: React.FC<BlobProps> = ({ children, color, size: propSize, onClick, style, className}) => {
   const theme = useTheme();
-  const size = theme.spacing(props.size);
+  const size = theme.spacing(propSize);
   
   const classes = useStyles({ size, color });
 
   return (
-    <div>
-      <svg height={size} width={size}>
-        <circle cx={size/2} cy={size/2} r={size/2} fill={color} cursor={props.clickable ? 'pointer' : undefined}/>
+    <div className={className}>
+      <svg height={size} width={size} style={style} className={classes.svg}>
+        <circle cx={size/2} cy={size/2} r={size/2} fill={color} cursor={onClick ? 'pointer' : undefined} onClick={onClick}/>
       </svg> 
         <div className={classes.text}>
           {children}

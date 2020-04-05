@@ -1,17 +1,15 @@
 import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
-import { orange, pink, blue } from '@material-ui/core/colors';
+import { orange, green } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
+import ViewContainer from '../components/ViewContainer';
 
 const useStyles = makeStyles(theme => ({
-    container: {
+    next: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: `calc(100% - ${theme.spacing(12)}px)`,
-        padding: theme.spacing(4),
-    },
+        justifyContent: 'center'
+    }
 }));
 
 const rememberThisText = `Seems like you are
@@ -23,7 +21,7 @@ const RememberThis: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
+    <ViewContainer>
         <Box display="flex" justifyContent="center">
             <Blob color={orange[400]} size={26}>
                 {rememberThisText}
@@ -45,8 +43,11 @@ const RememberThis: React.FC = () => {
             <Typography>
                 If you do not succeed in building a smartwatch within a year it will be too late and your competitors will have won.
             </Typography>
+            <Blob color={green[300]} size={8} onClick={() => console.log("Start")} className={classes.next}>
+                Start
+            </Blob>
         </Box>
-    </div>
+    </ViewContainer>
   );
 }
 

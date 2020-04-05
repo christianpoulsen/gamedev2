@@ -1,20 +1,15 @@
 import React from 'react';
 import { makeStyles, Box } from '@material-ui/core';
-import { orange } from '@material-ui/core/colors';
+import { orange, green } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
 import TeamMember from '../components/TeamMember';
+import ViewContainer from '../components/ViewContainer';
 
 const useStyles = makeStyles(theme => ({
-    container: {
+    next: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: `calc(100% - ${theme.spacing(12)}px)`,
-        padding: theme.spacing(4),
-    },
-    personBlob: {
-        display: 'flex',
+        justifyContent: 'center',
     }
 }));
 
@@ -32,7 +27,7 @@ const TheTeam: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
+    <ViewContainer>
         <Box display="flex" justifyContent="center">
             <Blob color={orange[400]} size={44}>
                 {letsGetStartedText}
@@ -41,8 +36,11 @@ const TheTeam: React.FC = () => {
         <Box pt={4}>
             <TeamMember img={"img"} name="Vicki" text="A coding wizard. Vicki can make magic in front of a computer. She’s absolutely essential"  />
             <TeamMember img={"img"} name="Arthur" text="3D printing, laser cutting, soldering - Arthur knows it all. There’s nothing he cannot build"  />
+            <Blob color={green[300]} size={8} onClick={() => console.log("Great")} className={classes.next}>
+                Great
+            </Blob>
         </Box>
-    </div>
+    </ViewContainer>
   );
 }
 
