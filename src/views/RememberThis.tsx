@@ -1,9 +1,11 @@
 import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
 import { orange, green } from '@material-ui/core/colors';
+import { useDispatch } from 'react-redux';
 
 import Blob from '../components/Blob';
 import ViewContainer from '../components/ViewContainer';
+import { changeView, Views } from '../store/viewActions';
 
 const useStyles = makeStyles(theme => ({
     next: {
@@ -19,6 +21,9 @@ Now remember this!`;
 
 const RememberThis: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleNext = () => dispatch(changeView(Views.HOME));
 
   return (
     <ViewContainer>
@@ -43,7 +48,7 @@ const RememberThis: React.FC = () => {
             <Typography>
                 If you do not succeed in building a smartwatch within a year it will be too late and your competitors will have won.
             </Typography>
-            <Blob color={green[300]} size={8} onClick={() => console.log("Start")} className={classes.next}>
+            <Blob color={green[300]} size={8} onClick={handleNext} className={classes.next}>
                 Start
             </Blob>
         </Box>

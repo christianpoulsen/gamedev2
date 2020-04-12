@@ -14,9 +14,10 @@ interface OptionProps {
     index: number;
     img: string;
     text: string;
+    onClick: () => void;
 }
 
-const Option: React.FC<OptionProps> = ({ index, img, text }) => {  
+const Option: React.FC<OptionProps> = ({ index, img, text, onClick }) => {  
   const classes = useStyles();
 
   return (
@@ -27,6 +28,7 @@ const Option: React.FC<OptionProps> = ({ index, img, text }) => {
         size={14}
         color={green[400]}
         className={classes.option}
+        onClick={onClick}
     />
   )
 }

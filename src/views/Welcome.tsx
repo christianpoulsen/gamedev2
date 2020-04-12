@@ -1,9 +1,12 @@
 import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
 import { orange, pink, blue } from '@material-ui/core/colors';
-import ViewContainer from '../components/ViewContainer';
+import { useDispatch } from 'react-redux';
 
+import ViewContainer from '../components/ViewContainer';
 import Blob from '../components/Blob';
+import {setPlayer} from '../store/playerActions';
+import {changeView, Views} from '../store/viewActions';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -33,6 +36,12 @@ Select a character:`;
 
 const Welcome: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handlePickPlayer = (player: string) => () => {
+    dispatch(setPlayer(player));
+    dispatch(changeView(Views.THE_TEAM))
+  }
 
   return (
     <ViewContainer>
@@ -44,7 +53,7 @@ const Welcome: React.FC = () => {
         <Box pt={4}>
             <Box className={classes.personBlob} justifyContent="flex-end">
                 <Box display="flex" justifyContent="center" flexDirection="column">
-                        <Blob color={pink[400]} size={22} onClick={() => console.log("Sofia")} >
+                        <Blob color={pink[400]} size={22} onClick={handlePickPlayer("Sofia")} >
                             img
                         </Blob>
                     <Typography variant="body1" align="center">Sofia</Typography>
@@ -52,7 +61,7 @@ const Welcome: React.FC = () => {
             </Box>
             <Box className={classes.personBlob} justifyContent="flex-start">
                 <Box display="flex" justifyContent="center" flexDirection="column" mt={-11}>
-                    <Blob color={blue[400]} size={22} onClick={() => console.log("Andy")}>
+                    <Blob color={blue[400]} size={22} onClick={handlePickPlayer("Andy")}>
                         img
                     </Blob>
                     <Typography variant="body1" align="center">Andy</Typography>

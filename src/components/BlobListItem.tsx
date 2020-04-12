@@ -12,12 +12,13 @@ interface OptionProps {
     color: string;
     style?: React.CSSProperties;
     className?: string;
+    onClick?: () => void;
 }
 
-const Option: React.FC<OptionProps> = ({ header, img, text, size, color, style, className }) => {  
+const Option: React.FC<OptionProps> = ({ header, img, text, size, color, style, className, onClick }) => {  
 
   return (
-    <Box display="flex" flexDirection="row" mb={1} style={style} className={className}>
+    <Box display="flex" flexDirection="row" mb={1} style={style} className={className} onClick={onClick}>
         <Blob size={size} color={color}>
             {img}
         </Blob>

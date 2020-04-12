@@ -1,24 +1,31 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
 
-import ViewHeader from './components/ViewHeader';
 import Welcome from './views/Welcome';
 import ValueProposition from './views/ValueProposition';
 import TheTeam from './views/TheTeam';
 import RememberThis from './views/RememberThis';
-import ViewContainer from './components/ViewContainer';
 import Home from './views/Home';
-
-const useStyles = makeStyles(theme => ({
-}));
+import { useSelector } from 'react-redux';
+import { Views } from './store/viewActions';
+import { State } from './store';
 
 const App: React.FC = () => {
-  const classes = useStyles();
+  const view = useSelector<State>(state => state.view);
 
-  return (
-    <Home />
-  )
+  switch (view) {
+    case Views.WELCOME:
+      return <Welcome/>
+    case Views.THE_TEAM:
+      return <TheTeam />
+    case Views.VALUE_PROPOSITION:
+      return <ValueProposition />
+    case Views.REMEMBER_THIS:
+      return <RememberThis />
+    case Views.HOME:
+      return <Home />
+    default:
+      return <Home />
+  }
 }
 
 export default App;
