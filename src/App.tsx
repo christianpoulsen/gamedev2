@@ -5,12 +5,12 @@ import ValueProposition from './views/ValueProposition';
 import TheTeam from './views/TheTeam';
 import RememberThis from './views/RememberThis';
 import Home from './views/Home';
-import { useSelector } from 'react-redux';
+import Build from './views/Build';
 import { Views } from './store/viewActions';
-import { State } from './store';
+import { useTypedSelector } from './store';
 
 const App: React.FC = () => {
-  const view = useSelector<State>(state => state.view);
+  const view = useTypedSelector(state => state.view)
 
   switch (view) {
     case Views.WELCOME:
@@ -23,6 +23,8 @@ const App: React.FC = () => {
       return <RememberThis />
     case Views.HOME:
       return <Home />
+    case Views.BUILD:
+      return <Build />
     default:
       return <Home />
   }

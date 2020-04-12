@@ -1,15 +1,16 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { orange } from '@material-ui/core/colors';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Blob from '../components/Blob';
 import Option from '../components/Option';
 import ViewContainer from '../components/ViewContainer';
 import { ValueProposition as VPType, setVP } from '../store/vpActions';
 import { Views, changeView } from '../store/viewActions';
+import { useTypedSelector } from '../store';
 
-const letsGetStartedText = `Well, Hello Sofia.
+const letsGetStartedText = (player: string) => `Well, Hello ${player}.
 Let’s get started. You and your
 team came up with this brilliant
 idea.
@@ -29,6 +30,7 @@ const valuePropositions: VPType[] = [
 
 const ValueProposition: React.FC = () => {
   const dispatch = useDispatch();
+  const player = useTypedSelector(state => state.player);
 
   const handlePickVP = (vp: VPType) => () => {
     dispatch(setVP(vp));
@@ -39,7 +41,7 @@ const ValueProposition: React.FC = () => {
     <ViewContainer>
         <Box display="flex" justifyContent="center">
             <Blob color={orange[400]} size={44}>
-                {letsGetStartedText}
+                {letsGetStartedText(player)}
             </Blob>
         </Box>
         <Box pt={4}>

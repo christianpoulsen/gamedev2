@@ -5,6 +5,8 @@ import { orange, pink, blue, green, purple } from '@material-ui/core/colors';
 import Blob from '../components/Blob';
 import InfoBar from '../components/InfoBar';
 import ViewContainer from '../components/ViewContainer';
+import { useDispatch } from 'react-redux';
+import { changeView, Views } from '../store/viewActions';
 
 const useStyles = makeStyles(theme => ({
     buttons: {
@@ -16,6 +18,9 @@ const useStyles = makeStyles(theme => ({
 
 const Home: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleBuildClick = () => dispatch(changeView(Views.BUILD));
 
   return (
     <ViewContainer header={<InfoBar />}>
@@ -23,7 +28,7 @@ const Home: React.FC = () => {
             <img src="#" alt="img" />
         </Box>
         <Box display="flex" flexDirection="row" justifyContent="space-around">
-            <Blob color={green[400]} size={16}>
+            <Blob color={green[400]} size={16} onClick={handleBuildClick}>
                 <Box>
                     <Typography>BUILD</Typography>
                     <img src="#" alt="img" />

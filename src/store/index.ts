@@ -1,4 +1,5 @@
 import { createStore, PreloadedState } from 'redux';
+import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import { View, Views } from './viewActions';
 import { ValueProposition, emptyVP } from './vpActions';
 import rootReducer from './reducers';
@@ -14,6 +15,8 @@ export const emptyState: State = {
     player: "",
     vp: emptyVP,
 }
+
+export const useTypedSelector: TypedUseSelectorHook<State> = useSelector;
 
 export const configureStore = (preLoadedState?: PreloadedState<State>) =>{
     
