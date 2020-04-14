@@ -15,7 +15,7 @@ const useStyles = makeStyles<Theme, { size: number, color: string }>(theme => ({
     alignItems: 'center',
     textAlign: 'center',
     color: ({ color }) => theme.palette.getContrastText(color),
-    whiteSpace: 'pre',
+    whiteSpace: 'normal',
     height: ({ size }) => size,
     width: ({ size }) => size,
     pointerEvents: 'none',

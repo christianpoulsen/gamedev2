@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
-import { orange, pink, blue, green, purple } from '@material-ui/core/colors';
+import { green } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
 import InfoBar from '../components/InfoBar';
@@ -10,6 +10,9 @@ import { useTypedSelector } from '../store';
 const useStyles = makeStyles(theme => ({
     transparentDiv: {
         width: theme.spacing(14),
+    },
+    vp: {
+        textAlign: "center",
     }
 }));
 
@@ -28,7 +31,21 @@ const Build: React.FC = () => {
                 <Typography variant="body1">{"BUILD A\nDIFFERENT\nSMART-\nWATCH"}</Typography>
             </Blob>
         </Box>
-        <Typography variant="h5">{vp.text}</Typography>
+        <Typography variant="h5" className={classes.vp}>{vp.text}</Typography>
+        <Box>
+            <Box>
+                <Blob size={18} color={green[300]}>{"SOURCE\nCOMPONENTS"}</Blob>
+            </Box>
+            <Box display="flex" justifyContent="flex-end" mt={-6}>
+                <Blob size={18} color={green[300]}>{"MAKE\nHARDWARE"}</Blob>
+            </Box>
+            <Box mt={-6}>
+                <Blob size={18} color={green[300]}>{"WRITE CODE"}</Blob>
+            </Box>
+            <Box display="flex" justifyContent="flex-end" mt={-6}>
+                <Blob size={18} color={green[300]}>{"TEST PRODUCT"}</Blob>
+            </Box>
+        </Box>
     </ViewContainer>
   );
 }

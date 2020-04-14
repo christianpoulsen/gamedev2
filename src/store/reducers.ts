@@ -2,9 +2,10 @@ import { Reducer } from "redux";
 import { CHANGE_VIEW, ViewAction } from './viewActions';
 import { SET_PLAYER, PlayerAction } from './playerActions';
 import { SET_VP, SetVPAction } from "./vpActions";
+import { PICK_DECISION, DecisionAction, getTasksForSubject } from './taskActions';
 import { State, emptyState } from './';
 
-export type ActionTypes = ViewAction | PlayerAction | SetVPAction;
+export type ActionTypes = ViewAction | PlayerAction | SetVPAction | DecisionAction;
 
 export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, action) => {
     switch (action.type) {
@@ -23,6 +24,14 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, act
                 ...state,
                 vp: action.vp,
             }
+        case PICK_DECISION: {
+            const decisions = getTasksForSubject(action.subject, state.tasks);
+            return {
+                ...state,
+                subject: action.subject,
+                decisions
+            }
+        }
         default:
             return state;
     }

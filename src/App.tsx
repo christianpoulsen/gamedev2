@@ -1,13 +1,14 @@
 import React from 'react';
 
-import Welcome from './views/Welcome';
-import ValueProposition from './views/ValueProposition';
-import TheTeam from './views/TheTeam';
-import RememberThis from './views/RememberThis';
-import Home from './views/Home';
-import Build from './views/Build';
+import Welcome from './views/WelcomeView';
+import ValueProposition from './views/ValuePropositionView';
+import TheTeam from './views/TheTeamView';
+import RememberThis from './views/RememberThisView';
+import Home from './views/HomeView';
+import Build from './views/BuildView';
 import { Views } from './store/viewActions';
 import { useTypedSelector } from './store';
+import DecisionView from './views/DecisionView';
 
 const App: React.FC = () => {
   const view = useTypedSelector(state => state.view)
@@ -25,6 +26,8 @@ const App: React.FC = () => {
       return <Home />
     case Views.BUILD:
       return <Build />
+    case Views.DECISION:
+      return <DecisionView />
     default:
       return <Home />
   }

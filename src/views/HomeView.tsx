@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { orange, pink, blue, green, purple } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
@@ -7,20 +7,17 @@ import InfoBar from '../components/InfoBar';
 import ViewContainer from '../components/ViewContainer';
 import { useDispatch } from 'react-redux';
 import { changeView, Views } from '../store/viewActions';
-
-const useStyles = makeStyles(theme => ({
-    buttons: {
-        '& > div': {
-            paddingTop: theme.spacing(1),
-        }
-    }
-}));
+import { pickDecision, TaskSubject, TaskSubjects } from '../store/taskActions';
 
 const Home: React.FC = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
 
   const handleBuildClick = () => dispatch(changeView(Views.BUILD));
+
+  const handleTaskSubjectClick = (subject: TaskSubject) => () => {
+    dispatch(pickDecision(subject))  
+    dispatch(changeView(Views.DECISION));
+  }
 
   return (
     <ViewContainer header={<InfoBar />}>
@@ -44,7 +41,7 @@ const Home: React.FC = () => {
         </Box>
         <Box display="flex" flexDirection="column" flexWrap="wrap" justifyContent="space-between">
             <Box display="flex" flexDirection="row" justifyContent="space-between">
-                <Blob color={blue[200]} size={12} >
+                <Blob color={blue[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.FUNDING)}>
                     <Typography>FUNDING</Typography>
                 </Blob>
                 <Blob color={purple[200]} size={12}>

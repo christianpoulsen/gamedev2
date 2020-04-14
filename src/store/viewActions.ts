@@ -13,6 +13,7 @@ export interface ViewTypes {
     readonly REMEMBER_THIS: "REMEMBER_THIS";
     readonly HOME: "HOME";
     readonly BUILD: "BUILD";
+    readonly DECISION: "DECISION";
 }
 
 export const Views: ViewTypes = {
@@ -22,6 +23,7 @@ export const Views: ViewTypes = {
     REMEMBER_THIS: "REMEMBER_THIS",
     HOME: "HOME",
     BUILD: "BUILD",
+    DECISION: "DECISION",
 }
 export type View = keyof typeof Views;
 
