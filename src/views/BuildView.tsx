@@ -1,11 +1,13 @@
 import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
+import { green, purple } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
 import InfoBar from '../components/InfoBar';
 import ViewContainer from '../components/ViewContainer';
 import { useTypedSelector } from '../store';
+import { changeView, Views } from '../store/viewActions';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
     transparentDiv: {
@@ -19,11 +21,16 @@ const useStyles = makeStyles(theme => ({
 const Build: React.FC = () => {
   const classes = useStyles();
   const vp = useTypedSelector(state => state.vp);
+  const dispatch = useDispatch();
+
+  const handleBack = () => dispatch(changeView(Views.HOME));
 
   return (
     <ViewContainer header={<InfoBar />}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-            <div className={classes.transparentDiv} />
+            <Blob size={6} color={purple[300]} onClick={handleBack}>
+                {"<--"}
+            </Blob>
             <Blob size={18} color={green[300]}>
                 <Typography variant="h5" color="inherit">BUILD</Typography>
             </Blob>

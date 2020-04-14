@@ -12,6 +12,11 @@ const useStyles = makeStyles(theme => ({
     next: {
         display: 'flex',
         justifyContent: 'center',
+    },
+    preSpace: {
+        '& div': {
+            whiteSpace: 'pre',
+        }
     }
 }));
 
@@ -34,7 +39,7 @@ const TheTeam: React.FC = () => {
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange[400]} size={44}>
+            <Blob color={orange[400]} size={44} className={classes.preSpace}>
                 {letsGetStartedText}
             </Blob>
         </Box>

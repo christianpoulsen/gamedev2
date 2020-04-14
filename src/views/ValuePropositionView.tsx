@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import { orange } from '@material-ui/core/colors';
 import { useDispatch } from 'react-redux';
 
@@ -9,6 +9,14 @@ import ViewContainer from '../components/ViewContainer';
 import { ValueProposition as VPType, setVP } from '../store/vpActions';
 import { Views, changeView } from '../store/viewActions';
 import { useTypedSelector } from '../store';
+
+const useStyles = makeStyles({
+  preSpace: {
+    '& div': {
+        whiteSpace: 'pre',
+    }
+  }
+})
 
 const letsGetStartedText = (player: string) => `Well, Hello ${player}.
 Let’s get started. You and your
@@ -29,6 +37,7 @@ const valuePropositions: VPType[] = [
 ]
 
 const ValueProposition: React.FC = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const player = useTypedSelector(state => state.player);
 
@@ -40,7 +49,7 @@ const ValueProposition: React.FC = () => {
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange[400]} size={44}>
+            <Blob color={orange[400]} size={44} className={classes.preSpace}>
                 {letsGetStartedText(player)}
             </Blob>
         </Box>

@@ -18,6 +18,11 @@ const useStyles = makeStyles(theme => ({
     },
     personBlob: {
         display: 'flex',
+    },
+    preSpace: {
+        '& div': {
+            whiteSpace: 'pre',
+        }
     }
 }));
 
@@ -46,7 +51,7 @@ const Welcome: React.FC = () => {
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange[400]} size={44}>
+            <Blob color={orange[400]} size={44} className={classes.preSpace}>
                 {welcomeText}
             </Blob>
         </Box>
