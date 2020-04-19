@@ -26,7 +26,7 @@ const App: React.FC = () => {
       return <Home />
     case Views.BUILD:
       return <Build />
-    case Views.DECISION:
+    case Views.SUBJECT:
       return <DecisionView />
     default:
       return <Home />

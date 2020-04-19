@@ -3,55 +3,76 @@ import { State } from '.';
 
 // actions
 
-export const PICK_DECISION = "PICK_DECISION";
+export const PICK_SUBJECT = "PICK_SUBJECT";
+export const PICK_DILEMMA = "PICK_DILEMMA";
 
 // other constants
 
 export interface TaskTypes {
     readonly TASK: "TASK";
     readonly DILEMMA: "DILEMMA";
+    readonly OPTION: "OPTION";
     readonly RESULT: "RESULT";
+    readonly STATECHECK: "STATECHECK";
 }
 export const Tasks: TaskTypes = {
     TASK: "TASK",
     DILEMMA: "DILEMMA",
+    OPTION: "OPTION",
     RESULT: "RESULT",
+    STATECHECK: "STATECHECK",
 }
 export type TaskType = keyof TaskTypes;
 
 export interface Task {
-    name: string;
+    id: string;
+    text: string;
     dilemma: Dilemma;
     type: TaskTypes["TASK"];
 }
 
 export interface Dilemma {
+    id: string;
     text: string;
     options: Option[];
     type: TaskTypes["DILEMMA"];
 }
 
 export interface Option {
+    id: string;
     text: string;
-    consequence: unknown;
+    consequence: Consequence;
     next: Dilemma | StateCheck | Result;
+    type: TaskTypes["OPTION"];
 }
 
-export interface ConditionTypes {
+export interface Consequence {
+    happiness: number;
+    days: number;
+    funding: number;
+}
+
+export interface CheckTypes {
     readonly REGISTERED_COMPANY: "REGISTERED_COMPANY";
     readonly RIGHT_VP: "RIGHT_VP";
 }
-export type Condition = keyof ConditionTypes;
+export const SupportedChecks: CheckTypes = {
+    REGISTERED_COMPANY: "REGISTERED_COMPANY",
+    RIGHT_VP: "RIGHT_VP",
+}
+export type Check = keyof CheckTypes;
 
 export interface StateCheck {
-    condition: Condition;
+    id: string;
+    check: Check;
     yes: Dilemma | Result;
     no: Dilemma | Result;
 }
 
 export interface Result {
+    id: string;
     text: string;
-    consequence: unknown;
+    consequence: Consequence;
     type: TaskTypes["RESULT"];
 }
 
@@ -67,18 +88,29 @@ export type TaskSubject = keyof TaskSubjectTypes;
 
 // action types
 
-export interface DecisionAction extends Action {
-    type: typeof PICK_DECISION;
+export interface SubjectAction extends Action {
+    type: typeof PICK_SUBJECT;
     subject: TaskSubject;
+}
+
+export interface DilemmaAction extends Action {
+    type: typeof PICK_DILEMMA;
+    dilemma: Dilemma;
 }
 
 // action creators
 
-export type PickDecision = (subject: TaskSubject) => DecisionAction;
-export const pickDecision: PickDecision = subject => ({
-    type: PICK_DECISION,
+export type PickSubject = (subject: TaskSubject) => SubjectAction;
+export const pickSubject: PickSubject = subject => ({
+    type: PICK_SUBJECT,
     subject
 })
+
+export type PickDilemma = (dilemma: Dilemma) => DilemmaAction;
+export const pickDilemma: PickDilemma = dilemma => ({
+    type: PICK_DILEMMA,
+    dilemma
+}) 
 
 // helpers
 

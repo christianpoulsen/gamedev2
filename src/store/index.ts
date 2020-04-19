@@ -2,9 +2,11 @@ import { createStore, PreloadedState } from 'redux';
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import { View, Views } from './viewActions';
 import { ValueProposition, emptyVP } from './vpActions';
-import { Task, Dilemma, Result, TaskSubject, TaskSubjects } from './taskActions';
+import { Task, Dilemma, Result, TaskSubject } from './taskActions';
 import rootReducer from './reducers';
 import * as Trees from './decisionTrees';
+
+console.log(Trees.dataTree);
 
 export interface State {
     view: View;
@@ -24,7 +26,7 @@ export const emptyState: State = {
     player: "",
     vp: emptyVP,
     tasks: {
-        funding: Trees.funding,
+        funding: Trees.dataTree,
         talkToCustomers: [],
     },
     subject: undefined,

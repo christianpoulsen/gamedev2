@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTypedSelector } from '../store';
+import { useTypedSelector, State } from '../store';
 import { Tasks } from '../store/taskActions';
 import TaskView from './decisionViews/TaskView';
 import DilemmaView from './decisionViews/DilemmaView';
@@ -9,9 +9,12 @@ import RootView from './decisionViews/RootView';
 import InfoBar from '../components/InfoBar';
 
 export const DecisionView: React.FC = () => {
-    const {subject, decisions, currentTask} = useTypedSelector(state => state);
+    const appState = useTypedSelector(state => state);
 
-    const renderView = () => {
+    const renderView = (state: State) => {
+        const {subject, decisions, currentTask} = state;
+
+        console.log(subject, decisions, currentTask)
 
         if (subject && decisions) {
             return <RootView subject={subject} decisions={decisions} />
@@ -33,7 +36,7 @@ export const DecisionView: React.FC = () => {
 
     return (
         <ViewContainer header={<InfoBar />}>
-            {renderView()}
+            {renderView(appState)}
         </ViewContainer>
     )
 

@@ -7,17 +7,14 @@ import InfoBar from '../components/InfoBar';
 import ViewContainer from '../components/ViewContainer';
 import { useDispatch } from 'react-redux';
 import { changeView, Views } from '../store/viewActions';
-import { pickDecision, TaskSubject, TaskSubjects } from '../store/taskActions';
+import { pickSubject, TaskSubject, TaskSubjects } from '../store/taskActions';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleBuildClick = () => dispatch(changeView(Views.BUILD));
 
-  const handleTaskSubjectClick = (subject: TaskSubject) => () => {
-    dispatch(pickDecision(subject))  
-    dispatch(changeView(Views.DECISION));
-  }
+  const handleTaskSubjectClick = (subject: TaskSubject) => () => dispatch(pickSubject(subject));
 
   return (
     <ViewContainer header={<InfoBar />}>
