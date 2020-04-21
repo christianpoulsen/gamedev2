@@ -2,7 +2,7 @@ import { createStore, PreloadedState } from 'redux';
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import { View, Views } from './viewActions';
 import { ValueProposition, emptyVP } from './vpActions';
-import { Task, Dilemma, Result, TaskSubject } from './taskActions';
+import { Task, Dilemma, Result, TaskSubject, SupportedChecks } from './taskActions';
 import rootReducer from './reducers';
 import * as Trees from './decisionTrees';
 
@@ -23,6 +23,9 @@ export interface State {
         happiness: number;
         days: number;
         funding: number;
+    },
+    checks: {
+        [SupportedChecks.REGISTERED_COMPANY]: boolean;
     }
 }
 
@@ -41,6 +44,9 @@ export const emptyState: State = {
         happiness: 100,
         days: 365,
         funding: 0,
+    },
+    checks: {
+        [SupportedChecks.REGISTERED_COMPANY]: false,
     }
 }
 

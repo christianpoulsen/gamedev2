@@ -44,7 +44,7 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, act
                 ...state,
                 stats: {
                     happiness: state.stats.happiness + action.option.consequence.happiness,
-                    days: state.stats.days - action.option.consequence.days,
+                    days: state.stats.days + action.option.consequence.days,
                     funding: state.stats.funding + action.option.consequence.funding,
                 },
                 currentTask: action.next,
@@ -54,7 +54,7 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, act
                 ...state,
                 stats: {
                     happiness: state.stats.happiness + action.consequence.happiness,
-                    days: state.stats.days - action.consequence.days,
+                    days: state.stats.days + action.consequence.days,
                     funding: state.stats.funding + action.consequence.funding,
                 },
                 currentTask: undefined,

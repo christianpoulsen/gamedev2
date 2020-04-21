@@ -4,7 +4,9 @@ import { Dilemma, Option, pickOption } from '../../store/taskActions';
 import { Box, Typography, ListItem, makeStyles } from '@material-ui/core';
 import Blob from '../../components/Blob';
 import getRandomMUIColor from '../../helpers/getRandomMUIColor';
+import fullfillsStateCheck from '../../helpers/fullfillsStateCheck';
 import isStateCheck from '../../helpers/isStateCheck';
+import { useTypedSelector } from '../../store';
 
 const useStyles = makeStyles(theme => ({
     item: {
@@ -21,10 +23,15 @@ interface DilemmaViewProps {
 export const DilemmaView: React.FC<DilemmaViewProps> = ({ dilemma }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const checks = useTypedSelector(state => state.checks);
 
     const handlePickOption = (option: Option) => () => {
         if (isStateCheck(option.next)) {
-            console.log("Got a StateCheck:\n", option.next)
+            if (fullfillsStateCheck(checks, option.next.check)) {
+                dispatch(pickOption(option, option.next.yes));
+            } else {
+                dispatch(pickOption(option, option.next.no));
+            }
         } else {
             dispatch(pickOption(option, option.next));
         }
