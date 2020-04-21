@@ -14,8 +14,6 @@ export const DecisionView: React.FC = () => {
     const renderView = (state: State) => {
         const {subject, decisions, currentTask} = state;
 
-        console.log(subject, decisions, currentTask)
-
         if (subject && decisions) {
             return <RootView subject={subject} decisions={decisions} />
         }

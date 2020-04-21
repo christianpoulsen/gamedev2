@@ -2,10 +2,10 @@ import { Reducer } from "redux";
 import { CHANGE_VIEW, ViewAction, Views } from './viewActions';
 import { SET_PLAYER, PlayerAction } from './playerActions';
 import { SET_VP, SetVPAction } from "./vpActions";
-import { PICK_SUBJECT, PICK_DILEMMA, SubjectAction, DilemmaAction, getTasksForSubject } from './taskActions';
+import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject } from './taskActions';
 import { State, emptyState } from './';
 
-export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction;
+export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction;
 
 export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, action) => {
     switch (action.type) {
@@ -38,6 +38,28 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, act
                 ...state,
                 currentTask: action.dilemma,
                 decisions: undefined
+            }
+        case PICK_OPTION:
+            return {
+                ...state,
+                stats: {
+                    happiness: state.stats.happiness + action.option.consequence.happiness,
+                    days: state.stats.days - action.option.consequence.days,
+                    funding: state.stats.funding + action.option.consequence.funding,
+                },
+                currentTask: action.next,
+            }
+        case OK_RESULT:
+            return {
+                ...state,
+                stats: {
+                    happiness: state.stats.happiness + action.consequence.happiness,
+                    days: state.stats.days - action.consequence.days,
+                    funding: state.stats.funding + action.consequence.funding,
+                },
+                currentTask: undefined,
+                subject: undefined,
+                view: Views.HOME,
             }
         default:
             return state;

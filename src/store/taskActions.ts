@@ -5,6 +5,8 @@ import { State } from '.';
 
 export const PICK_SUBJECT = "PICK_SUBJECT";
 export const PICK_DILEMMA = "PICK_DILEMMA";
+export const PICK_OPTION = "PICK_OPTION";
+export const OK_RESULT = "OK_RESULT";
 
 // other constants
 
@@ -46,11 +48,7 @@ export interface Option {
     type: TaskTypes["OPTION"];
 }
 
-export interface Consequence {
-    happiness: number;
-    days: number;
-    funding: number;
-}
+export type Consequence = State["stats"];
 
 export interface CheckTypes {
     readonly REGISTERED_COMPANY: "REGISTERED_COMPANY";
@@ -98,6 +96,17 @@ export interface DilemmaAction extends Action {
     dilemma: Dilemma;
 }
 
+export interface OptionAction extends Action {
+    type: typeof PICK_OPTION;
+    option: Option;
+    next: State["currentTask"];
+}
+
+export interface ResultAction extends Action {
+    type: typeof OK_RESULT;
+    consequence: Consequence;
+}
+
 // action creators
 
 export type PickSubject = (subject: TaskSubject) => SubjectAction;
@@ -110,7 +119,20 @@ export type PickDilemma = (dilemma: Dilemma) => DilemmaAction;
 export const pickDilemma: PickDilemma = dilemma => ({
     type: PICK_DILEMMA,
     dilemma
-}) 
+})
+
+export type PickOption = (option: Option, next: State["currentTask"]) => OptionAction;
+export const pickOption: PickOption = (option, next) => ({
+    type: PICK_OPTION,
+    option,
+    next,
+})
+
+export type OkResult = (consequence: Consequence) => ResultAction;
+export const okResult: OkResult = consequence => ({
+    type: OK_RESULT,
+    consequence,
+})
 
 // helpers
 

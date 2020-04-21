@@ -19,6 +19,11 @@ export interface State {
     subject?: TaskSubject;
     decisions?: Task[];
     currentTask?: Task | Dilemma | Result;
+    stats: {
+        happiness: number;
+        days: number;
+        funding: number;
+    }
 }
 
 export const emptyState: State = {
@@ -32,6 +37,11 @@ export const emptyState: State = {
     subject: undefined,
     decisions: undefined,
     currentTask: undefined,
+    stats: {
+        happiness: 100,
+        days: 365,
+        funding: 0,
+    }
 }
 
 export const useTypedSelector: TypedUseSelectorHook<State> = useSelector;
