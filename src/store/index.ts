@@ -1,17 +1,20 @@
 import { createStore, PreloadedState } from 'redux';
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
 import { View, Views } from './viewActions';
-import { ValueProposition, emptyVP } from './vpActions';
+import { ValueProposition, initialVps } from './vpActions';
 import { Task, Dilemma, Result, TaskSubject, SupportedChecks } from './taskActions';
 import rootReducer from './reducers';
 import * as Trees from './decisionTrees';
 
-console.log(Trees.dataTree);
-
 export interface State {
     view: View;
     player: string;
-    vp: ValueProposition;
+    vpState: {
+        currentVP?: ValueProposition;
+        rightVP: ValueProposition;
+        vps: ValueProposition[];
+        previouslyPickedVps: ValueProposition[];
+    },
     tasks: {
         funding: Task[];
         talkToCustomers: Task[];
@@ -26,13 +29,23 @@ export interface State {
     },
     checks: {
         [SupportedChecks.REGISTERED_COMPANY]: boolean;
+    },
+    prerequisiteState: {
+        foundersFunding: Task;
+        foundersFundingPickCount: number;
+        fffFunding: Task
     }
 }
 
 export const emptyState: State = {
     view: Views.WELCOME,
     player: "",
-    vp: emptyVP,
+    vpState: {
+        currentVP: undefined,
+        rightVP: initialVps[Math.floor(Math.random() * (initialVps.length - 1))],
+        vps: initialVps,
+        previouslyPickedVps: [],
+    },
     tasks: {
         funding: Trees.dataTree,
         talkToCustomers: [],
@@ -47,6 +60,11 @@ export const emptyState: State = {
     },
     checks: {
         [SupportedChecks.REGISTERED_COMPANY]: false,
+    },
+    prerequisiteState: {
+        foundersFunding: Trees.dataTree[0],
+        foundersFundingPickCount: 0,
+        fffFunding: Trees.dataTree[1],
     }
 }
 

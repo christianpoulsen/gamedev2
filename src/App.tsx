@@ -9,6 +9,7 @@ import Build from './views/BuildView';
 import { Views } from './store/viewActions';
 import { useTypedSelector } from './store';
 import DecisionView from './views/DecisionView';
+import ChangeVPView from './views/ChangeVPView';
 
 const App: React.FC = () => {
   const view = useTypedSelector(state => state.view)
@@ -28,6 +29,8 @@ const App: React.FC = () => {
       return <Build />
     case Views.SUBJECT:
       return <DecisionView />
+    case Views.CHANGE_VP:
+      return <ChangeVPView />
     default:
       return <Home />
   }

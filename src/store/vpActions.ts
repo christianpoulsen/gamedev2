@@ -11,10 +11,12 @@ export interface ValueProposition {
     img: string;
 }
 
-export const emptyVP = {
-    text: "",
-    img: "img",
-}
+export const initialVps: ValueProposition[] = [
+    { text: "Build a smartwatch to help kids develop healthy habits", img: "img" },
+    { text: "Build a smartwatch to help parents keep an eye on their kids", img: "img" },
+    { text: "Build a smartwatch to help kids stay motivated and track fitness", img: "img" },
+];
+
 
 // action types
 

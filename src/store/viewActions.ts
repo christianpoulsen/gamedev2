@@ -14,6 +14,7 @@ export interface ViewTypes {
     readonly HOME: "HOME";
     readonly BUILD: "BUILD";
     readonly SUBJECT: "SUBJECT";
+    readonly CHANGE_VP: "CHANGE_VP";
 }
 
 export const Views: ViewTypes = {
@@ -24,6 +25,7 @@ export const Views: ViewTypes = {
     HOME: "HOME",
     BUILD: "BUILD",
     SUBJECT: "SUBJECT",
+    CHANGE_VP: "CHANGE_VP",
 }
 export type View = keyof typeof Views;
 

@@ -20,10 +20,14 @@ const useStyles = makeStyles(theme => ({
 
 const Build: React.FC = () => {
   const classes = useStyles();
-  const vp = useTypedSelector(state => state.vp);
+  const vp = useTypedSelector(state => state.vpState.currentVP);
   const dispatch = useDispatch();
 
   const handleBack = () => dispatch(changeView(Views.HOME));
+
+  const handlePickNewVP = () => dispatch(changeView(Views.CHANGE_VP));
+
+  if (!vp) return <div/>;
 
   return (
     <ViewContainer header={<InfoBar />}>
@@ -34,7 +38,7 @@ const Build: React.FC = () => {
             <Blob size={18} color={green[300]}>
                 <Typography variant="h5" color="inherit">BUILD</Typography>
             </Blob>
-            <Blob size={14} color={green[300]}>
+            <Blob size={14} color={green[300]} onClick={handlePickNewVP}>
                 <Typography variant="body1">{"BUILD A\nDIFFERENT\nSMART-\nWATCH"}</Typography>
             </Blob>
         </Box>
