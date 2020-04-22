@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, makeStyles, Typography } from '@material-ui/core';
-import { orange, purple, green, lightBlue } from '@material-ui/core/colors';
+import { Box, Typography } from '@material-ui/core';
+import { green, lightBlue } from '@material-ui/core/colors';
 import { useDispatch } from 'react-redux';
 
 import Blob from '../components/Blob';
@@ -10,16 +10,7 @@ import { ValueProposition as VPType, setVP } from '../store/vpActions';
 import { Views, changeView } from '../store/viewActions';
 import { useTypedSelector } from '../store';
 
-const useStyles = makeStyles({
-  preSpace: {
-    '& div': {
-        whiteSpace: 'pre',
-    }
-  }
-})
-
 const ChangeVPView: React.FC = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const {player, vpState} = useTypedSelector(state => state);
 

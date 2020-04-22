@@ -7,7 +7,7 @@ export const FullfillsStateCheck = (statechecks: State["checks"], check: Check) 
         case SupportedChecks.REGISTERED_COMPANY:
             return statechecks[check]
         case SupportedChecks.RIGHT_VP:
-            return false;
+            return statechecks[check];
         default:
             return false;
     }

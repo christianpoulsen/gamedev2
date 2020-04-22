@@ -2,12 +2,12 @@ import { Reducer } from "redux";
 import { CHANGE_VIEW, ViewAction, Views } from './viewActions';
 import { SET_PLAYER, PlayerAction } from './playerActions';
 import { SET_VP, SetVPAction } from "./vpActions";
-import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject } from './taskActions';
-import { State, emptyState } from './';
+import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject, SupportedChecks } from './taskActions';
+import { State, initialState } from './';
 
 export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction;
 
-export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, action) => {
+export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_VIEW:
             return {
@@ -21,20 +21,26 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = emptyState, act
             };
         case SET_VP: {
             const currentVp = state.vpState.currentVP
-            let fundingTasks = state.tasks.funding;
-            if (currentVp !== undefined && state.prerequisiteState.foundersFundingPickCount !== 2 && !state.vpState.previouslyPickedVps.find(vp => vp.text === action.vp.text)) {
-                fundingTasks = [ state.prerequisiteState.foundersFunding, ...fundingTasks];
-            }
+            const fullfillsFoundersPrerequisites = 
+                currentVp !== undefined && 
+                    state.prerequisiteState.foundersFundingPickCount !== 2 && 
+                        !state.tasks.funding.find(task => task.id === state.prerequisiteState.foundersFunding.id) &&
+                            !state.vpState.previouslyPickedVps.find(vp => vp.text === action.vp.text);
             return {
                 ...state,
                 tasks: {
                     ...state.tasks,
-                    funding: fundingTasks,
+                    funding: fullfillsFoundersPrerequisites ? [ state.prerequisiteState.foundersFunding, ...state.tasks.funding] : state.tasks.funding,
                 },
                 vpState: {
                     ...state.vpState,
                     currentVP: action.vp,
+                    rightVP: currentVp === undefined ? state.vpState.vps.filter(vp => vp.text !== action.vp.text)[Math.floor(Math.random() * 1)] : state.vpState.rightVP,
                     previouslyPickedVps: [action.vp, ...state.vpState.previouslyPickedVps],
+                },
+                checks: {
+                    ...state.checks,
+                    [SupportedChecks.RIGHT_VP]: action.vp.text === state.vpState.rightVP?.text
                 }
             }
         }

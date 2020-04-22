@@ -4,7 +4,8 @@ import { View, Views } from './viewActions';
 import { ValueProposition, initialVps } from './vpActions';
 import { Task, Dilemma, Result, TaskSubject, SupportedChecks } from './taskActions';
 import rootReducer from './reducers';
-import * as Trees from './decisionTrees';
+
+import fundingTask from '../data/funding';
 
 export interface State {
     view: View;
@@ -29,6 +30,7 @@ export interface State {
     },
     checks: {
         [SupportedChecks.REGISTERED_COMPANY]: boolean;
+        [SupportedChecks.RIGHT_VP]: boolean;
     },
     prerequisiteState: {
         foundersFunding: Task;
@@ -37,7 +39,7 @@ export interface State {
     }
 }
 
-export const emptyState: State = {
+export const initialState: State = {
     view: Views.WELCOME,
     player: "",
     vpState: {
@@ -47,7 +49,7 @@ export const emptyState: State = {
         previouslyPickedVps: [],
     },
     tasks: {
-        funding: Trees.dataTree,
+        funding: fundingTask,
         talkToCustomers: [],
     },
     subject: undefined,
@@ -60,11 +62,12 @@ export const emptyState: State = {
     },
     checks: {
         [SupportedChecks.REGISTERED_COMPANY]: false,
+        [SupportedChecks.RIGHT_VP]: false,
     },
     prerequisiteState: {
-        foundersFunding: Trees.dataTree[0],
+        foundersFunding: fundingTask[0],
         foundersFundingPickCount: 0,
-        fffFunding: Trees.dataTree[1],
+        fffFunding: fundingTask[1],
     }
 }
 
