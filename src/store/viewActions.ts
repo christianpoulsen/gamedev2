@@ -15,6 +15,7 @@ export interface ViewTypes {
     readonly BUILD: "BUILD";
     readonly SUBJECT: "SUBJECT";
     readonly CHANGE_VP: "CHANGE_VP";
+    readonly END: "END";
 }
 
 export const Views: ViewTypes = {
@@ -26,6 +27,7 @@ export const Views: ViewTypes = {
     BUILD: "BUILD",
     SUBJECT: "SUBJECT",
     CHANGE_VP: "CHANGE_VP",
+    END: "END",
 }
 export type View = keyof typeof Views;
 

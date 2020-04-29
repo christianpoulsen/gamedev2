@@ -28,7 +28,7 @@ const Home: React.FC = () => {
                     <img src="#" alt="img" />
                 </Box>
             </Blob>
-            <Blob color={pink[100]} size={16}>
+            <Blob color={pink[100]} size={16} onClick={() => dispatch(changeView(Views.END))}>
                 <Box>
                     <Typography>MAKE</Typography>
                     <Typography>FIRST</Typography>
