@@ -16,7 +16,7 @@ export const EndView: React.FC = () => {
 
     const handleSubmit = async () => {
         
-        await fetch("https://seriousentrepreneurshipgame.netlify.app/.netlify/functions/send-email?feedback=" + feedback);
+        await fetch("https://gamedev2.netlify.app/.netlify/functions/send-email?feedback=" + feedback);
         setSentFeedback(true);
     }
 
