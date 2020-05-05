@@ -25,7 +25,7 @@ const Option: React.FC<OptionProps> = ({ index, img, text, onClick }) => {
         img={img}
         header={`Option ${index}`}
         text={text}
-        size={14}
+        size={12}
         color={green[400]}
         className={classes.option}
         onClick={onClick}

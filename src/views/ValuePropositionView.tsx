@@ -43,17 +43,17 @@ const ValueProposition: React.FC = () => {
 
   const handlePickVP = (vp: VPType) => () => {
     dispatch(setVP(vp));
-    dispatch(changeView(Views.REMEMBER_THIS));
+    dispatch(changeView(Views.THE_TEAM));
   }
 
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange[400]} size={44} className={classes.preSpace}>
+            <Blob color={orange[400]} size={36} className={classes.preSpace}>
                 {letsGetStartedText(player)}
             </Blob>
         </Box>
-        <Box pt={4}>
+        <Box>
           {valuePropositions.map((vp, i) => (
             <Option key={i} index={i+1} img={vp.img} text={vp.text} onClick={handlePickVP(vp)} />
           ))}

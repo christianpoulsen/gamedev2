@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
     mobileView: {
         display: 'flex',
         flexDirection: 'column',
-        width: 480,
-        height: 896,
+        width: 375,
+        height: 667,
         backgroundColor: theme.palette.background.paper,
         [theme.breakpoints.down("xs")]: {
             width: '100%',
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         justifyContent: 'space-between',
         height: `calc(100% - ${theme.spacing(12)}px)`,
-        padding: theme.spacing(4),
+        padding: theme.spacing(2),
     },
 }));
 

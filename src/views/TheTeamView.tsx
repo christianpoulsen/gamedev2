@@ -34,16 +34,16 @@ const TheTeam: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const handleNext = () => dispatch(changeView(Views.VALUE_PROPOSITION));
+  const handleNext = () => dispatch(changeView(Views.REMEMBER_THIS));
 
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange[400]} size={44} className={classes.preSpace}>
+            <Blob color={orange[400]} size={32} className={classes.preSpace}>
                 {letsGetStartedText}
             </Blob>
         </Box>
-        <Box pt={4}>
+        <Box>
             <TeamMember img={"img"} name="Vicki" text="A coding wizard. Vicki can make magic in front of a computer. She’s absolutely essential"  />
             <TeamMember img={"img"} name="Arthur" text="3D printing, laser cutting, soldering - Arthur knows it all. There’s nothing he cannot build"  />
             <Blob color={green[300]} size={8} onClick={handleNext} className={classes.next}>

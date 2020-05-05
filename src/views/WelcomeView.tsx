@@ -45,20 +45,20 @@ const Welcome: React.FC = () => {
 
   const handlePickPlayer = (player: string) => () => {
     dispatch(setPlayer(player));
-    dispatch(changeView(Views.THE_TEAM))
+    dispatch(changeView(Views.VALUE_PROPOSITION))
   }
 
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
-            <Blob color={orange[400]} size={44} className={classes.preSpace}>
+            <Blob color={orange[400]} size={40} className={classes.preSpace}>
                 {welcomeText}
             </Blob>
         </Box>
         <Box pt={4}>
             <Box className={classes.personBlob} justifyContent="flex-end">
                 <Box display="flex" justifyContent="center" flexDirection="column">
-                        <Blob color={pink[400]} size={22} onClick={handlePickPlayer("Sofia")} >
+                        <Blob color={pink[400]} size={18} onClick={handlePickPlayer("Sofia")} >
                             img
                         </Blob>
                     <Typography variant="body1" align="center">Sofia</Typography>
@@ -66,7 +66,7 @@ const Welcome: React.FC = () => {
             </Box>
             <Box className={classes.personBlob} justifyContent="flex-start">
                 <Box display="flex" justifyContent="center" flexDirection="column" mt={-11}>
-                    <Blob color={blue[400]} size={22} onClick={handlePickPlayer("Andy")}>
+                    <Blob color={blue[400]} size={18} onClick={handlePickPlayer("Andy")}>
                         img
                     </Blob>
                     <Typography variant="body1" align="center">Andy</Typography>
