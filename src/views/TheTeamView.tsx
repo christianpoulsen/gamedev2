@@ -8,6 +8,9 @@ import Blob from '../components/Blob';
 import TeamMember from '../components/TeamMember';
 import ViewContainer from '../components/ViewContainer';
 
+import VickiPng from '../assets/VIcki.png';
+import ArthurPng from '../assets/Arthur.png';
+
 const useStyles = makeStyles(theme => ({
     next: {
         display: 'flex',
@@ -44,8 +47,8 @@ const TheTeam: React.FC = () => {
             </Blob>
         </Box>
         <Box>
-            <TeamMember img={"img"} name="Vicki" text="A coding wizard. Vicki can make magic in front of a computer. She’s absolutely essential"  />
-            <TeamMember img={"img"} name="Arthur" text="3D printing, laser cutting, soldering - Arthur knows it all. There’s nothing he cannot build"  />
+            <TeamMember img={VickiPng} name="Vicki" text="A coding wizard. Vicki can make magic in front of a computer. She’s absolutely essential"  />
+            <TeamMember img={ArthurPng} name="Arthur" text="3D printing, laser cutting, soldering - Arthur knows it all. There’s nothing he cannot build"  />
             <Blob color={green[300]} size={8} onClick={handleNext} className={classes.next}>
                 Great
             </Blob>

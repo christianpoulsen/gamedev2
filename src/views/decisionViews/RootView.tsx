@@ -7,6 +7,7 @@ import { changeView, Views } from '../../store/viewActions';
 import Blob from '../../components/Blob';
 import BackHeader from '../../components/BackHeader';
 import { useDispatch } from 'react-redux';
+import { OptionBox } from '../../components/OptionBox';
 
 const useStyles = makeStyles(theme => ({
     subject: {
@@ -14,17 +15,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: 18,
         fontWeight: 'bold',
     },
-    box: {
-        width: '100%',
-        padding: theme.spacing(5, 0),
-        margin: theme.spacing(2, 0),
-        borderRadius: theme.spacing(1),
-        display: 'flex',
-        justifyContent: 'center',
-        fontSize: 18,
-        fontWeight: 'bold',
-        cursor: 'pointer',
-    }
 }))
 
 interface RootProps {
@@ -52,9 +42,7 @@ export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
             <Typography>Options</Typography>
             <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" flexGrow={1}>
                 {decisions.map(task => (
-                    <Box key={task.id} className={classes.box} style={{backgroundColor: blue[400]}} onClick={handleNext(task.dilemma)}>
-                        {task.text}
-                    </Box>
+                    <OptionBox key={task.id} text={task.text} color={blue[400]} onClick={handleNext(task.dilemma)}/>
                 ))}
             </Box>
         </>

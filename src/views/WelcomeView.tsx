@@ -8,6 +8,9 @@ import Blob from '../components/Blob';
 import {setPlayer} from '../store/playerActions';
 import {changeView, Views} from '../store/viewActions';
 
+import AndyPng from '../assets/Andy.png';
+import SofiaPng from '../assets/Sofia.png';
+
 const useStyles = makeStyles(theme => ({
     container: {
         display: 'flex',
@@ -18,6 +21,9 @@ const useStyles = makeStyles(theme => ({
     },
     personBlob: {
         display: 'flex',
+        '& img': {
+            padding: theme.spacing(3),
+        }
     },
     preSpace: {
         '& div': {
@@ -59,15 +65,15 @@ const Welcome: React.FC = () => {
             <Box className={classes.personBlob} justifyContent="flex-end">
                 <Box display="flex" justifyContent="center" flexDirection="column">
                         <Blob color={pink[400]} size={18} onClick={handlePickPlayer("Sofia")} >
-                            img
+                            <img src={SofiaPng} alt="sofia icon" />
                         </Blob>
                     <Typography variant="body1" align="center">Sofia</Typography>
                 </Box>
             </Box>
             <Box className={classes.personBlob} justifyContent="flex-start">
                 <Box display="flex" justifyContent="center" flexDirection="column" mt={-11}>
-                    <Blob color={blue[400]} size={18} onClick={handlePickPlayer("Andy")}>
-                        img
+                    <Blob color={blue[400]} size={18} onClick={handlePickPlayer("Andy")} className={classes.personBlob}>
+                        <img src={AndyPng} alt="andy icon" />
                     </Blob>
                     <Typography variant="body1" align="center">Andy</Typography>
                 </Box>

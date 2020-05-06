@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 512 512">
+<metadata>
+<vectornator:setting key="DynamicGuides" value="1"/>
+<vectornator:setting key="Units" value="Points"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="GridSpacing" value="36"/>
+</metadata>
+<defs>
+<linearGradient y1="337.632" id="LinearGradient" x1="269.384" y2="-116.438" x2="140.633" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -2.08459 -3.96202)">
+<stop stop-color="#df8545" offset="0"/>
+<stop stop-color="#ffcf64" offset="0.447147"/>
+<stop stop-color="#ffffff" offset="1"/>
+</linearGradient>
+</defs>
+<g id="Layer 1" vectornator:layerName="Layer 1">
+<path d="M-2.08459+251.051C-2.08459+109.666+112.53-4.94865+253.915-4.94865C395.3-4.94865+509.915+109.666+509.915+251.051C509.915+392.436+395.3+507.051+253.915+507.051C112.53+507.051-2.08459+392.436-2.08459+251.051Z" fill-rule="evenodd" fill="url(#LinearGradient)" opacity="1"/>
+<path d="M137.912+199.473C137.912+171.76+157.643+159.57+178.881+159.57C200.12+159.57+219.85+171.76+219.85+199.473C219.85+227.186+201.508+249.652+178.881+249.652C156.255+249.652+137.912+227.186+137.912+199.473Z" fill-rule="evenodd" fill="#2a2925" opacity="1"/>
+<path d="M300.323+199.298C300.323+171.585+318.665+160.08+341.292+160.08C363.918+160.08+382.261+171.585+382.261+199.298C382.261+227.011+363.918+249.477+341.292+249.477C318.665+249.477+300.323+227.011+300.323+199.298Z" fill-rule="evenodd" fill="#2a2925" opacity="1"/>
+</g>
+<g id="Layer 2" vectornator:layerName="Layer 2">
+<path d="M442.906+80.51C474.469+122.824+493.25+175.675+493.25+233.041C493.25+371.94+383.308+484.541+247.719+484.541C112.13+484.541+2.21877+371.94+2.21875+233.041C2.21875+228.266+2.36855+223.532+2.625+218.822C0.917211+230.764+0+242.971+0+255.385C-1.01725e-05+396.77+114.615+511.385+256+511.385C397.385+511.385+512+396.77+512+255.385C512+187.752+485.745+126.276+442.906+80.51Z" fill-rule="evenodd" fill="#0b0b0b" opacity="0.145998"/>
+<path d="M39.5824+169.022C31.8655+161.305+57.961+103.383+103.891+65.1582C146.916+29.3513+219.622+8.88696+230.787+20.0523C241.953+31.2177+178.524+39.6313+122.885+84.0656C67.2454+128.5+47.2992+176.738+39.5824+169.022Z" fill-rule="evenodd" fill="#ffffff" opacity="0.505371"/>
+<path stroke="#2a2925" stroke-width="18.88" d="M152.874+381.186C187.148+367.417+220.429+358.546+272.916+353.373C304.603+350.25+324.631+351.307+357.574+353.196" fill="none" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+</g>
+</svg>

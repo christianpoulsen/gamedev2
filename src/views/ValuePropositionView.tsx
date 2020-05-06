@@ -30,16 +30,10 @@ which smartwatch to build.
 
 Chose one:`;
 
-const valuePropositions: VPType[] = [
-  { text: "Build a smartwatch to help kids develop healthy habits", img: "img" },
-  { text: "Build a smartwatch to help parents keep an eye on their kids", img: "img" },
-  { text: "Build a smartwatch to help kids stay motivated and track fitness", img: "img" },
-]
-
 const ValueProposition: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const player = useTypedSelector(state => state.player);
+  const {player, vpState: { vps }} = useTypedSelector(state => state);
 
   const handlePickVP = (vp: VPType) => () => {
     dispatch(setVP(vp));
@@ -54,7 +48,7 @@ const ValueProposition: React.FC = () => {
             </Blob>
         </Box>
         <Box>
-          {valuePropositions.map((vp, i) => (
+          {vps.map((vp, i) => (
             <Option key={i} index={i+1} img={vp.img} text={vp.text} onClick={handlePickVP(vp)} />
           ))}
         </Box>
