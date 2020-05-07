@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Box, Typography } from '@material-ui/core';
 import { blue } from '@material-ui/core/colors';
 
-import { TaskSubject, Task, Dilemma, pickDilemma } from '../../store/taskActions';
+import { Task, Dilemma, pickDilemma } from '../../store/taskActions';
 import { changeView, Views } from '../../store/viewActions';
 import Blob from '../../components/Blob';
 import BackHeader from '../../components/BackHeader';
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface RootProps {
-    subject: TaskSubject
+    subject: string;
     decisions: Task[];
 }
 
@@ -33,7 +33,7 @@ export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
     return (
         <>
             <BackHeader className={classes.subject} onBack={handleBack}>
-                <Blob size={12} color={blue[400]}>
+                <Blob size={15} color={blue[400]}>
                     {subject}
                 </Blob>
                 <div style={{width: 48}} />

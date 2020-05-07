@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 import { CHANGE_VIEW, ViewAction, Views } from './viewActions';
 import { SET_PLAYER, PlayerAction } from './playerActions';
 import { SET_VP, SetVPAction } from "./vpActions";
-import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject, SupportedChecks } from './taskActions';
+import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject, SupportedChecks, TaskSubjects } from './taskActions';
 import { State, initialState } from './';
 
 export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction;
@@ -46,10 +46,11 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
         }
         case PICK_SUBJECT: {
             const decisions = getTasksForSubject(action.subject, state.tasks);
+            const subject = action.subject === TaskSubjects.TALK_TO_CUSTOMERS ? "TALK TO\nCUSTOMERS" : action.subject;
             return {
                 ...state,
                 view: Views.SUBJECT,
-                subject: action.subject,
+                subject,
                 decisions
             }
         }

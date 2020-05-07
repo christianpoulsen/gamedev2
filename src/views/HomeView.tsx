@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, makeStyles } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { orange, pink, blue, green, purple } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';

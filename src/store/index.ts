@@ -23,7 +23,7 @@ export interface State {
         pretotype: Task[];
         analyze: Task[];
     };
-    subject?: TaskSubject;
+    subject?: TaskSubject | "TALK TO\nCUSTOMERS";
     decisions?: Task[];
     currentTask?: Task | Dilemma | Result;
     stats: {
