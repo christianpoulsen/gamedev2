@@ -4,6 +4,7 @@ import { Task, Tasks, Dilemma, Option, Result, StateCheck, SupportedChecks, Chec
 export const dataParser = (csvString: string) => {
 
     const parsedData = papaparse.parse(csvString).data;
+    console.log("Parsed Data:", parsedData);
 
     const headers: string[] = parsedData[0];
 
@@ -18,6 +19,12 @@ export const dataParser = (csvString: string) => {
     const options: Array<{ [key: string]: string }> = parsedData.filter((row: string[]) => row[2] === Tasks.OPTION).map(arrayToJson);
     const results: Array<{ [key: string]: string }> = parsedData.filter((row: string[]) => row[2] === Tasks.RESULT).map(arrayToJson);
     const stateChecks: Array<{ [key: string]: string }> = parsedData.filter((row: string[]) => row[2] === Tasks.STATECHECK).map(arrayToJson);
+
+    console.log("Tasks:", tasks);
+    console.log("Dilemmas:", dilemmas);
+    console.log("Options:", options);
+    console.log("Results:",results);
+    console.log("StateChecks:", stateChecks);
 
     const checkSupportedCheck = (stateCheck: string): Check => {
         switch (stateCheck) {
@@ -83,6 +90,9 @@ export const dataParser = (csvString: string) => {
             const dilemma = dilemmas.find(json => json["Id"] === option["Next 1"]);
             const result = results.find(json => json["Id"] === option["Next 1"]);
             const stateCheck = stateChecks.find(json => json["Id"] === option["Next 1"]);
+
+            console.log(option);
+            console.log(dilemma, result, stateCheck);
 
             const next: Dilemma | Result | StateCheck | undefined = dilemma ? getDilemma(dilemma["Id"]) : result ? getResult(result["Id"]) : stateCheck ? getStateCheck(stateCheck["Id"]) : undefined;
 

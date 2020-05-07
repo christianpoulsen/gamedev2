@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         '& div': {
             whiteSpace: 'pre',
         }
-    }
+    },
 }));
 
 const rememberThisText = `Seems like you are
@@ -37,22 +37,19 @@ const RememberThis: React.FC = () => {
                 {rememberThisText}
             </Blob>
         </Box>
-        <Box pt={4} display="flex" flexDirection="column" justifyContent="space-between" height="100%">
-            <Typography variant="h6">
-                Your overall goal is to sell a smartwatch to a customer. If you succeed you’ll win.
-            </Typography>
-            <Typography>
-                To sell a smartwatch, you need to build it first. It takes around 4-5 months to build a watch.
-            </Typography>
-            <Typography>
+        <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
+                <b>Your overall goal is to sell a smartwatch to a customer. If you succeed you’ll win.</b>
+
+                <span>To sell a smartwatch, you need to build it first. It takes around 4-5 months to build a watch.</span>
+            <span>
                 The faster you build a smartwatch and make a sale, the better you’ll score.
-            </Typography>
-            <Typography>
+            </span>
+            <span>
                 If you build the wrong smartwatch, you cannot sell it and you’ll have to start building a different smartwatch.
-            </Typography>
-            <Typography>
+            </span>
+            <span>
                 If you do not succeed in building a smartwatch within a year it will be too late and your competitors will have won.
-            </Typography>
+            </span>
             <Blob color={green[300]} size={8} onClick={handleNext} className={classes.next}>
                 Start
             </Blob>

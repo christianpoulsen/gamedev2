@@ -44,21 +44,21 @@ const Home: React.FC = () => {
                 <Blob color={blue[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.FUNDING)}>
                     <BigWhite>FUNDING</BigWhite>
                 </Blob>
-                <Blob color={purple[200]} size={12}>
+                <Blob color={purple[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.TALK_TO_CUSTOMERS)}>
                     <Box display="flex" flexDirection="column">
                         <SmallWhite>TALK TO</SmallWhite>
                         <SmallWhite>CUSTOMERS</SmallWhite>
                     </Box>
                 </Blob>
-                <Blob color={green[200]} size={12}>
+                <Blob color={green[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.PRETOTYPE)}>
                     <BigWhite>PRETOTYPE</BigWhite>
                 </Blob>
             </Box>
             <Box display="flex" flexDirection="row" justifyContent="space-between" mt={1}>
-                <Blob color={pink[200]} size={12}>
+                <Blob color={pink[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.SOCIALIZE)}>
                     <BigWhite>SOCIALIZE</BigWhite>
                 </Blob>
-                <Blob color={orange[200]} size={12}>
+                <Blob color={orange[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.ANALYZE)}>
                 <BigWhite>ANALYZE</BigWhite>
                 </Blob>
                 <Blob color={green[400]} size={12}>

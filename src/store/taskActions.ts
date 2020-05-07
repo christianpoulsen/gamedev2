@@ -77,10 +77,16 @@ export interface Result {
 export interface TaskSubjectTypes {
     readonly FUNDING: "FUNDING";
     readonly TALK_TO_CUSTOMERS: "TALK_TO_CUSTOMERS";
+    readonly SOCIALIZE: "SOCIALIZE";
+    readonly ANALYZE: "ANALYZE";
+    readonly PRETOTYPE: "PRETOTYPE";
 }
 export const TaskSubjects: TaskSubjectTypes = {
     FUNDING: "FUNDING",
     TALK_TO_CUSTOMERS: "TALK_TO_CUSTOMERS",
+    SOCIALIZE: "SOCIALIZE",
+    ANALYZE: "ANALYZE",
+    PRETOTYPE: "PRETOTYPE",
 }
 export type TaskSubject = keyof TaskSubjectTypes;
 
@@ -142,6 +148,12 @@ export const getTasksForSubject = (subject: TaskSubject, taskMap: State["tasks"]
             return taskMap.funding;
         case TaskSubjects.TALK_TO_CUSTOMERS:
             return taskMap.talkToCustomers;
+        case TaskSubjects.PRETOTYPE:
+            return taskMap.pretotype;
+        case TaskSubjects.SOCIALIZE:
+            return taskMap.socialize;
+        case TaskSubjects.ANALYZE:
+            return taskMap.analyze;
         default:
             return [];
     }

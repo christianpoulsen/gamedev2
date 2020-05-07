@@ -38,7 +38,7 @@ Id,Text,Type,Next 1,Next 2,Next 3,Happiness,Days,Funding,Check,Yes,No
 36,Make a investor pitch deck and share it with business angle associations,OPTION,38,,,,-10,,,,
 37,Pick up your phone and start cold calling business angels,OPTION,38,,,,-10,,,,
 38,Has a company been registered?,STATECHECK,,,,,,,REGISTERED_COMPANY,39,40
-39,A business angel is interested in meeting you for a 15 minues cup of coffee. If she’s interested in investing she would like around 20% ownership and she want you to prepare a valuation of the company. What’s your valuation?,DILEMMA,41,42,43,,,,,,
+39,A business angel is interested in meeting you for a 15 minues cup of coffee. If she’s interested in investing she would like around 20% ownership and she wants you to prepare a valuation of the company. What’s your valuation?,DILEMMA,41,42,43,,,,,,
 41,The company is valued around $50.000. She’ll have to pay $10.000 for 20%,OPTION,44,,,,,,,,
 42,The company is valued around $250.000. She’ll have to pay $50.000 for 20%,OPTION,44,,,,,,,,
 43,The company is valued around $750.000. She’ll have to pay $150.000 for 20%,OPTION,44,,,,,,,,

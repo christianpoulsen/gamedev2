@@ -5,7 +5,7 @@ import { ValueProposition, initialVps } from './vpActions';
 import { Task, Dilemma, Result, TaskSubject, SupportedChecks } from './taskActions';
 import rootReducer from './reducers';
 
-import fundingTask from '../data/funding';
+import { fundingTasks, socializeTasks,analyzeTasks, pretotypeTasks, talkToCustomersTasks } from '../data';
 
 export interface State {
     view: View;
@@ -19,6 +19,9 @@ export interface State {
     tasks: {
         funding: Task[];
         talkToCustomers: Task[];
+        socialize: Task[];
+        pretotype: Task[];
+        analyze: Task[];
     };
     subject?: TaskSubject;
     decisions?: Task[];
@@ -49,8 +52,11 @@ export const initialState: State = {
         previouslyPickedVps: [],
     },
     tasks: {
-        funding: fundingTask,
-        talkToCustomers: [],
+        funding: fundingTasks,
+        talkToCustomers: talkToCustomersTasks,
+        socialize: socializeTasks,
+        pretotype: pretotypeTasks,
+        analyze: analyzeTasks,
     },
     subject: undefined,
     decisions: undefined,
@@ -65,9 +71,9 @@ export const initialState: State = {
         [SupportedChecks.RIGHT_VP]: false,
     },
     prerequisiteState: {
-        foundersFunding: fundingTask[0],
+        foundersFunding: fundingTasks[0],
         foundersFundingPickCount: 0,
-        fffFunding: fundingTask[1],
+        fffFunding: fundingTasks[1],
     }
 }
 
