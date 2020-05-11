@@ -2,10 +2,11 @@ import { Reducer } from "redux";
 import { CHANGE_VIEW, ViewAction, Views } from './viewActions';
 import { SET_PLAYER, PlayerAction } from './playerActions';
 import { SET_VP, SetVPAction } from "./vpActions";
+import { INCREASE_BUILT_LEVEL, BuildAction } from './buildActions';
 import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject, SupportedChecks, TaskSubjects } from './taskActions';
 import { State, initialState } from './';
 
-export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction;
+export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction | BuildAction;
 
 export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, action) => {
     switch (action.type) {
@@ -101,6 +102,16 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                 currentTask: undefined,
                 subject: undefined,
                 view: Views.HOME,
+            }
+        case INCREASE_BUILT_LEVEL:
+            return {
+                ...state,
+                stats: {
+                    happiness: state.stats.happiness + action.consequence.happiness,
+                    days: state.stats.days + action.consequence.days,
+                    funding: state.stats.funding + action.consequence.funding,
+                },
+                builtLevel: state.builtLevel + 1
             }
         default:
             return state;

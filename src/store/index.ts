@@ -39,7 +39,8 @@ export interface State {
         foundersFunding: Task;
         foundersFundingPickCount: number;
         fffFunding: Task
-    }
+    },
+    builtLevel: number;
 }
 
 export const initialState: State = {
@@ -74,7 +75,8 @@ export const initialState: State = {
         foundersFunding: fundingTasks[0],
         foundersFundingPickCount: 0,
         fffFunding: fundingTasks[1],
-    }
+    },
+    builtLevel: 0
 }
 
 export const useTypedSelector: TypedUseSelectorHook<State> = useSelector;
