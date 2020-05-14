@@ -5,8 +5,9 @@ import { SET_VP, SetVPAction } from "./vpActions";
 import { INCREASE_BUILT_LEVEL, BuildAction } from './buildActions';
 import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject, SupportedChecks, TaskSubjects } from './taskActions';
 import { State, initialState } from './';
+import { StatsAction, UPDATE_STATS } from "./statsActions";
 
-export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction | BuildAction;
+export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction | BuildAction | StatsAction;
 
 export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, action) => {
     switch (action.type) {
@@ -112,6 +113,15 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                     funding: state.stats.funding + action.consequence.funding,
                 },
                 builtLevel: state.builtLevel + 1
+            }
+        case UPDATE_STATS:
+            return {
+                ...state,
+                stats: {
+                    happiness: action.cons?.happiness ? state.stats.happiness + action.cons.happiness : state.stats.happiness,
+                    days: action.cons?.days ? state.stats.days + action.cons.days : state.stats.days,
+                    funding: action.cons?.funding ? state.stats.funding + action.cons.funding : state.stats.funding,
+                },
             }
         default:
             return state;

@@ -18,14 +18,14 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export const MoneyCon: React.FC<{ funding: number }> = ({ funding }) => {
-    if (funding === 0) return null;
+export const MoneyCon: React.FC<{ funding?: number }> = ({ funding }) => {
+    if (!funding || funding === 0) return null;
 
     return <Con img={DollarPng} alt="Dollar icon" text={`${funding}$`} />
 }
 
-export const TimeCon: React.FC<{ days: number }> = ({ days }) => {
-    if (days === 0) return null;
+export const TimeCon: React.FC<{ days?: number }> = ({ days }) => {
+    if (!days || days === 0) return null;
 
     return <Con img={TimePng} alt="Time icon" text={`${days} DAYS`} />
 }

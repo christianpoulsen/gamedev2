@@ -31,7 +31,7 @@ const Home: React.FC = () => {
                     <img src={VpOption2} alt="img" style={{ height: 64 }} />
                 </Box>
             </Blob>
-            <Blob color={pink[100]} size={16} onClick={() => dispatch(changeView(Views.END))}>
+            <Blob color={pink[100]} size={16} onClick={() => dispatch(changeView(Views.SALE))}>
                 <Box display="flex" flexDirection="column">
                     <BigWhite>MAKE</BigWhite>
                     <BigWhite>FIRST</BigWhite>

@@ -11,14 +11,15 @@ export const SET_VP = "SET_VP";
 // other constants
 
 export interface ValueProposition {
+    id: number;
     text: string;
     img: string;
 }
 
 export const initialVps: ValueProposition[] = [
-    { text: "Build a smartwatch to help kids develop healthy habits", img: VpOption1 },
-    { text: "Build a smartwatch to help parents keep an eye on their kids", img: VpOption2 },
-    { text: "Build a smartwatch to help kids stay motivated and track fitness", img: VpOption3 },
+    { id: 0, text: "Build a smartwatch to help kids develop healthy habits", img: VpOption1 },
+    { id: 1, text: "Build a smartwatch to help parents keep an eye on their kids", img: VpOption2 },
+    { id: 2, text: "Build a smartwatch to help kids stay motivated and track fitness", img: VpOption3 },
 ];
 
 

@@ -11,6 +11,8 @@ import { useTypedSelector } from './store';
 import DecisionView from './views/DecisionView';
 import ChangeVPView from './views/ChangeVPView';
 import EndView from './views/EndView';
+import SaleView from './views/SaleView';
+import CongratzView from './views/CongratzView';
 
 const App: React.FC = () => {
   const view = useTypedSelector(state => state.view)
@@ -34,6 +36,10 @@ const App: React.FC = () => {
       return <ChangeVPView />
     case Views.END:
       return <EndView />
+    case Views.SALE:
+      return <SaleView />
+    case Views.CONGRATZ:
+      return <CongratzView />
     default:
       return <Home />
   }

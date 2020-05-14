@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Box, Typography, BoxProps } from '@material-ui/core';
-import { green, purple } from '@material-ui/core/colors';
+import { green } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
 import InfoBar from '../components/InfoBar';
@@ -64,7 +64,8 @@ const Build: React.FC = () => {
         <Box>
             <BuildBlob
                 text={"SOURCE\nCOMPONENTS"}
-                active={builtLevel === 0}
+                index={0}
+                level={builtLevel}
                 onClick={handleBuildClick}
                 funding={-500}
                 days={-30}
@@ -74,7 +75,8 @@ const Build: React.FC = () => {
             />
             <BuildBlob
                 text={"MAKE\nHARDWARE"}
-                active={builtLevel === 1}
+                index={1}
+                level={builtLevel}
                 onClick={handleBuildClick}
                 funding={0}
                 days={-45}
@@ -86,7 +88,8 @@ const Build: React.FC = () => {
             />
             <BuildBlob
                 text={"WRITE CODE"}
-                active={builtLevel === 2}
+                index={2}
+                level={builtLevel}
                 onClick={handleBuildClick}
                 funding={0}
                 days={-30}
@@ -97,7 +100,8 @@ const Build: React.FC = () => {
             />
             <BuildBlob
                 text={"TEST PRODUCT"}
-                active={builtLevel === 3}
+                index={3}
+                level={builtLevel}
                 onClick={handleBuildClick}
                 funding={0}
                 days={-30}
@@ -114,16 +118,20 @@ const Build: React.FC = () => {
 
 interface BuildBlobProps {
     text: string;
-    active: boolean;
+    index: number;
+    level: number;
     onClick: (funding: number, days: number) => void;
     funding: number;
     days: number;
     boxProps?: BoxProps;
 }
 
-const BuildBlob: React.FC<BuildBlobProps> = ({ text, active, onClick, funding, days, boxProps }) => {
+const BuildBlob: React.FC<BuildBlobProps> = ({ text, index, level, onClick, funding, days, boxProps }) => {
 
     const handleClick = () => onClick(funding, days);
+
+    const active = index === level;
+    const done = index < level;
 
     return (
         <Box display="flex" {...boxProps} >
@@ -132,8 +140,12 @@ const BuildBlob: React.FC<BuildBlobProps> = ({ text, active, onClick, funding, d
                     <SmallWhite>
                         {text}
                     </SmallWhite>
-                    <TimeCon days={days} />
-                    <MoneyCon funding={funding} />
+                    {!done && (
+                        <>
+                            <TimeCon days={days} />
+                            <MoneyCon funding={funding} />
+                        </>
+                    )}
                 </Box>
             </Blob>
         </Box>
