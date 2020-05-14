@@ -6,8 +6,8 @@ import { TimeCon, MoneyCon } from './Con';
 const useStyles = makeStyles<Theme, {color: string}>(theme => ({
     box: {
         width: '90%',
-        padding: theme.spacing(5, 2),
-        margin: theme.spacing(2, 0),
+        padding: theme.spacing(3, 2),
+        marginTop: theme.spacing(1),
         borderRadius: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
