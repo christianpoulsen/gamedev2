@@ -3,3 +3,9 @@ declare module '*.csv' {
 
     export default file;
 }
+
+declare module '*.mp3' {
+    const file: string;
+
+    export default file;
+}

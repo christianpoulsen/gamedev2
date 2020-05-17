@@ -9,6 +9,7 @@ import ViewContainer from '../components/ViewContainer';
 import { ValueProposition as VPType, setVP } from '../store/vpActions';
 import { Views, changeView } from '../store/viewActions';
 import { useTypedSelector } from '../store';
+import { BackButton } from '../components/BackButton';
 
 const ChangeVPView: React.FC = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,7 @@ const ChangeVPView: React.FC = () => {
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Blob size={6} color={green[300]} onClick={handleBack}>
-                {"<--"}
-            </Blob>
+            <BackButton color={green[300]} onClick={handleBack} />
         </Box>
         <Box display="flex" justifyContent="center">
             <Blob size={32} color={lightBlue[300]}>

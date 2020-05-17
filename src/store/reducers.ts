@@ -43,7 +43,8 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                 checks: {
                     ...state.checks,
                     [SupportedChecks.RIGHT_VP]: action.vp.text === state.vpState.rightVP?.text
-                }
+                },
+                builtLevel: 0,
             }
         }
         case PICK_SUBJECT: {

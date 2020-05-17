@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Typography, InputBaseProps, TextField, makeStyles } from '@material-ui/core';
-import { green, blue, teal, lightGreen, orange } from '@material-ui/core/colors';
+import { Box, InputBaseProps, TextField, makeStyles } from '@material-ui/core';
+import { lightGreen, orange } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
 import ViewContainer from '../components/ViewContainer';
@@ -11,7 +11,7 @@ import Smiley from '../assets/smileys/Smiley_5.svg';
 import HappySmiley from '../assets/smileys/Smiley_7.svg';
 import VeryHappySmiley from '../assets/smileys/Smiley_9.svg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     smileys: {
         width: '100%',
         display: 'flex',
@@ -26,16 +26,24 @@ const useStyles = makeStyles(theme => ({
 
 export const EndView: React.FC = () => {
     const [feedback, setFeedback] = useState("");
+    const [experience, setExperience] = useState(0);
     const classes = useStyles();
 
     const handleChange: InputBaseProps['onChange'] = e => setFeedback(e.target.value);
 
-    // eslint-disable-next-line no-restricted-globals
-    const handlePlayAgain = () => location.reload();
+    const handlePlayAgain = () => {
+        if (feedback || experience) {
+            const message = `Experience: ${experience}
+Feedback: ${feedback}
+            `
+            handleSubmit(message);
+        }
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
+    }
 
-    const handleSubmit = async () => {
-        
-        await fetch("https://gamedev2.netlify.app/.netlify/functions/send-email?feedback=" + feedback);
+    const handleSubmit = async (message: string) => {
+        await fetch("https://gamedev2.netlify.app/.netlify/functions/send-email?feedback=" + message);
     }
 
     return (
@@ -51,11 +59,11 @@ export const EndView: React.FC = () => {
                     {`How was your experience\nplaying the game?`}
                 </Box>
                 <Box className={classes.smileys}>
-                    <img src={VerySadSmiley} alt="Very sad smiley" />
-                    <img src={SadSmiley} alt="Sad smiley" />
-                    <img src={Smiley} alt="Neutral smiley" />
-                    <img src={HappySmiley} alt="Happy smiley" />
-                    <img src={VeryHappySmiley} alt="Very happy smiley" />
+                    <img src={VerySadSmiley} alt="Very sad smiley" onClick={() => setExperience(1)} />
+                    <img src={SadSmiley} alt="Sad smiley" onClick={() => setExperience(2)} />
+                    <img src={Smiley} alt="Neutral smiley" onClick={() => setExperience(3)} />
+                    <img src={HappySmiley} alt="Happy smiley" onClick={() => setExperience(4)} />
+                    <img src={VeryHappySmiley} alt="Very happy smiley" onClick={() => setExperience(5)} />
                 </Box>
                 <Box display="flex" flexDirection="column" >
                     <Box whiteSpace="pre" textAlign="center">

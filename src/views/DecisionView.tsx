@@ -26,6 +26,8 @@ export const DecisionView: React.FC = () => {
                 return <DilemmaView dilemma={currentTask} />;
             case Tasks.RESULT:
                 return <ResultView result={currentTask} />;
+            default:
+                return <div />
         }
     }
 
