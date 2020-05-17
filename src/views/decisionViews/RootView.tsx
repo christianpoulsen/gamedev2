@@ -30,10 +30,12 @@ export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
 
     const handleNext = (next: Dilemma) => () => dispatch(pickDilemma(next))
 
+    const color = blue[400];
+
     return (
         <>
-            <BackHeader className={classes.subject} onBack={handleBack}>
-                <Blob size={15} color={blue[400]}>
+            <BackHeader className={classes.subject} color={color} onBack={handleBack}>
+                <Blob size={15} color={color}>
                     {subject}
                 </Blob>
                 <div style={{width: 48}} />
@@ -42,7 +44,7 @@ export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
             <Typography>Options</Typography>
             <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" flexGrow={1}>
                 {decisions.map(task => (
-                    <OptionBox key={task.id} text={task.text} color={blue[400]} onClick={handleNext(task.dilemma)}/>
+                    <OptionBox key={task.id} text={task.text} color={color} onClick={handleNext(task.dilemma)}/>
                 ))}
             </Box>
         </>

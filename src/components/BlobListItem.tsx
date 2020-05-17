@@ -1,13 +1,13 @@
 import React from 'react';
-import { Box, Typography, makeStyles } from '@material-ui/core';
+import { Box, Typography, makeStyles, Theme } from '@material-ui/core';
 
 import Blob from './Blob';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles<Theme, {width: number}>(theme => ({
   imgBlob: {
     '& img': {
       padding: theme.spacing(2),
-
+      width: ({ width }) =>  theme.spacing(width+2),
     }
   }
 }))
@@ -24,7 +24,7 @@ interface OptionProps {
 }
 
 const Option: React.FC<OptionProps> = ({ header, img, text, size, color, style, className, onClick }) => {  
-  const classes = useStyles();
+  const classes = useStyles({width: size / 2});
 
   return (
     <Box display="flex" flexDirection="row" mb={1} style={style} className={className} onClick={onClick}>

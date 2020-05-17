@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         '& img': {
             padding: theme.spacing(3),
+            width: theme.spacing(12),
         }
     },
     preSpace: {

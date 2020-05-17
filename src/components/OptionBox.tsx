@@ -3,7 +3,7 @@ import { Box, makeStyles, Theme } from '@material-ui/core';
 import { Consequence } from '../store/taskActions';
 import { TimeCon, MoneyCon } from './Con';
 
-const useStyles = makeStyles<Theme, {color: string}>(theme => ({
+const useStyles = makeStyles<Theme, {color: string; disabled: boolean}>(theme => ({
     box: {
         width: '90%',
         padding: theme.spacing(3, 2),
@@ -15,8 +15,9 @@ const useStyles = makeStyles<Theme, {color: string}>(theme => ({
         textAlign: 'center',
         fontSize: 18,
         fontWeight: 'bold',
-        cursor: 'pointer',
+        cursor: ({disabled}) => disabled ? 'default' : 'pointer',
         backgroundColor: ({ color }) => color,
+        opacity: ({disabled}) => disabled ? 0.5 : 1,
         color: ({color}) => theme.palette.getContrastText(color),
     }
 }))
@@ -27,10 +28,11 @@ interface OptionBoxProperties {
     cons?: Partial<Consequence>;
     onClick?: () => void;
     style?: React.CSSProperties;
+    disabled?: boolean;
 }
 
-export const OptionBox: React.FC<OptionBoxProperties> = ({ text, style, onClick, color, cons }) => {
-    const classes = useStyles({color});
+export const OptionBox: React.FC<OptionBoxProperties> = ({ text, style, onClick, color, cons, disabled = false }) => {
+    const classes = useStyles({color, disabled});
 
     return (
         <Box className={classes.box} style={style} onClick={onClick}>

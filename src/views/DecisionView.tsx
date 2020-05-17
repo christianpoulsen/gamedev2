@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTypedSelector, State } from '../store';
 import { Tasks } from '../store/taskActions';
-import TaskView from './decisionViews/TaskView';
 import DilemmaView from './decisionViews/DilemmaView';
 import ResultView from './decisionViews/ResultView';
 import ViewContainer from '../components/ViewContainer';
@@ -23,8 +22,6 @@ export const DecisionView: React.FC = () => {
         }
         
         switch (currentTask.type) {
-            case Tasks.TASK:
-                return <TaskView task={currentTask} />;
             case Tasks.DILEMMA:
                 return <DilemmaView dilemma={currentTask} />;
             case Tasks.RESULT:
