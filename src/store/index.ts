@@ -63,7 +63,7 @@ export const initialState: State = {
     decisions: undefined,
     currentTask: undefined,
     stats: {
-        happiness: 100,
+        happiness: 9,
         days: 365,
         funding: 0,
     },

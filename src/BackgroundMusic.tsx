@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 import IntroMusic from './assets/music/If_I_Had_a_Chicken.mp3';
@@ -26,13 +26,18 @@ const BackgroundMusic: React.FC = () => {
             ((audioRef.current.audioEl as unknown as React.RefObject<HTMLAudioElement>).current as HTMLAudioElement).play();
         }        
     }
+
+    useEffect(() => {
+        // ((audioRef.current?.audioEl as unknown as React.RefObject<HTMLAudioElement>).current as HTMLAudioElement).play();
+        const audio = new Audio(IntroMusic);
+        audio.play();
+    })
     
     return (
         <ReactAudioPlayer
             ref={audioRef}
             src={IntroMusic}
             onEnded={handleEnded}
-            autoPlay
         />
     )
 }
