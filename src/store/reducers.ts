@@ -83,16 +83,24 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                 foundersFundingPickCount,
             }
         }
-        case PICK_OPTION:
+        case PICK_OPTION: {
+            const happiness = state.stats.happiness + action.option.consequence.happiness;
+            const days = state.stats.days + action.option.consequence.days;
+            const funding = state.stats.funding + action.option.consequence.funding;
+
+            const gameOver = happiness <= 0 || days <= 0;
+
             return {
                 ...state,
                 stats: {
-                    happiness: state.stats.happiness + action.option.consequence.happiness,
-                    days: state.stats.days + action.option.consequence.days,
-                    funding: state.stats.funding + action.option.consequence.funding,
+                    happiness,
+                    days,
+                    funding,
                 },
                 currentTask: action.next,
+                view: gameOver ? Views.GAME_OVER : state.view,
             }
+        }
         case OK_RESULT:
             return {
                 ...state,

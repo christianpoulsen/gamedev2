@@ -48,34 +48,32 @@ const InfoBar: React.FC<InfoBarProps> = ({ children }) => {
 }
 
 const getSmileySvg = (happiness: number) => {
-    let smiley = Smiley9;
-
-    if (happiness < 2) {
-        smiley = Smiley8;
+    if (happiness === 1) {
+        return Smiley1;
     }
-    if (happiness < 3) {
-        smiley = Smiley7;
+    if (happiness === 2) {
+        return Smiley2;
     }
-    if (happiness < 4) {
-        smiley = Smiley6;
+    if (happiness === 3) {
+        return Smiley3;
     }
-    if (happiness < 5) {
-        smiley = Smiley5;
+    if (happiness === 4) {
+        return Smiley4;
     }
-    if (happiness < 6) {
-        smiley = Smiley4;
+    if (happiness === 5) {
+        return Smiley5;
     }
-    if (happiness < 7) {
-        smiley = Smiley3;
+    if (happiness === 6) {
+        return Smiley6;
     }
-    if (happiness < 8) {
-        smiley = Smiley2;
+    if (happiness === 7) {
+        return Smiley7;
     }
-    if (happiness < 9) {
-        smiley = Smiley1;
+    if (happiness === 8) {
+        return Smiley8;
     }
-
-    return smiley;
+    
+    return Smiley9;
 }
 
 export default InfoBar;

@@ -18,6 +18,7 @@ export interface ViewTypes {
     readonly END: "END";
     readonly SALE: "SALE";
     readonly CONGRATZ: "CONGRATZ";
+    readonly GAME_OVER: "GAME_OVER";
 }
 
 export const Views: ViewTypes = {
@@ -32,6 +33,7 @@ export const Views: ViewTypes = {
     END: "END",
     SALE: "SALE",
     CONGRATZ: "CONGRATZ",
+    GAME_OVER: "GAME_OVER",
 }
 export type View = keyof typeof Views;
 
