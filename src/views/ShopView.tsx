@@ -31,7 +31,6 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-
 export const ShopView: React.FC = () => {
     const classes = useStyles();
     const dispatch = useDispatch();

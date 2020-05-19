@@ -11,6 +11,7 @@ import { pickSubject, TaskSubject, TaskSubjects } from '../store/taskActions';
 
 import VpOption2 from '../assets/Option2.png';
 import BigWhite, { SmallWhite } from '../components/BigWhite';
+import HomeImage from '../components/HomeImage';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,7 @@ const Home: React.FC = () => {
 
   return (
     <ViewContainer header={<InfoBar />}>
-        <Box display="flex" justifyContent="center" alignItems="center">
-            <img src="#" alt="img" />
-        </Box>
+        <HomeImage />
         <Box display="flex" flexDirection="row" justifyContent="space-around" alignItems="flex-end">
             <Blob color={green[400]} size={16} onClick={handleBuildClick}>
                 <Box display="flex" flexDirection="column" >
