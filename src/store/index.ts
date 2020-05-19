@@ -6,6 +6,7 @@ import { Task, Dilemma, Result, TaskSubject, SupportedChecks } from './taskActio
 import rootReducer from './reducers';
 
 import { fundingTasks, socializeTasks,analyzeTasks, pretotypeTasks, talkToCustomersTasks } from '../data';
+import { ShopThing, shopThings } from './shopActions';
 
 export interface State {
     view: View;
@@ -41,6 +42,11 @@ export interface State {
         fffFunding: Task
     },
     builtLevel: number;
+    bought: {
+        [shopThings.COFFEE]: boolean;
+        [shopThings.SOLDERING]: boolean;
+        [shopThings.FRIDGE]: boolean;
+    }
 }
 
 export const initialState: State = {
@@ -76,7 +82,12 @@ export const initialState: State = {
         foundersFundingPickCount: 0,
         fffFunding: fundingTasks[1],
     },
-    builtLevel: 0
+    builtLevel: 0,
+    bought: {
+        [shopThings.COFFEE]: false,
+        [shopThings.SOLDERING]: false,
+        [shopThings.FRIDGE]: false,
+    }
 }
 
 export const useTypedSelector: TypedUseSelectorHook<State> = useSelector;

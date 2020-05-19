@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 const Build: React.FC = () => {
   const classes = useStyles();
   const vp = useTypedSelector(state => state.vpState.currentVP);
-  const { stats, builtLevel } = useTypedSelector(state => state);
+  const { stats, builtLevel, bought } = useTypedSelector(state => state);
   const dispatch = useDispatch();
 
   const handleBack = () => dispatch(changeView(Views.HOME));
@@ -68,7 +68,7 @@ const Build: React.FC = () => {
                 level={builtLevel}
                 onClick={handleBuildClick}
                 funding={-500}
-                days={-30}
+                days={bought.COFFEE ? -27 : -30}
                 boxProps={{
                     alignItems: "center"
                 }}
@@ -79,7 +79,7 @@ const Build: React.FC = () => {
                 level={builtLevel}
                 onClick={handleBuildClick}
                 funding={0}
-                days={-45}
+                days={bought.SOLDERING ? -36 : -45}
                 boxProps={{
                     alignItems: "center",
                     justifyContent: "flex-end",
@@ -92,7 +92,7 @@ const Build: React.FC = () => {
                 level={builtLevel}
                 onClick={handleBuildClick}
                 funding={0}
-                days={-30}
+                days={bought.FRIDGE ? -18 : -30}
                 boxProps={{
                     alignItems: "center",
                     mt: -6

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import { orange, pink, blue, green, purple } from '@material-ui/core/colors';
+import { orange, pink, blue, green, purple, teal } from '@material-ui/core/colors';
 
 import Blob from '../components/Blob';
 import InfoBar from '../components/InfoBar';
@@ -24,12 +24,15 @@ const Home: React.FC = () => {
         <Box display="flex" justifyContent="center" alignItems="center">
             <img src="#" alt="img" />
         </Box>
-        <Box display="flex" flexDirection="row" justifyContent="space-around">
+        <Box display="flex" flexDirection="row" justifyContent="space-around" alignItems="flex-end">
             <Blob color={green[400]} size={16} onClick={handleBuildClick}>
                 <Box display="flex" flexDirection="column" >
                     <BigWhite>BUILD</BigWhite>
                     <img src={VpOption2} alt="img" style={{ height: 64 }} />
                 </Box>
+            </Blob>
+            <Blob color={teal[200]} size={10} onClick={() => dispatch(changeView(Views.SHOP))}>
+                <BigWhite>SHOP</BigWhite>
             </Blob>
             <Blob color={pink[100]} size={16} onClick={() => dispatch(changeView(Views.SALE))}>
                 <Box display="flex" flexDirection="column">

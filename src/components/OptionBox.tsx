@@ -38,10 +38,10 @@ export const OptionBox: React.FC<OptionBoxProperties> = ({ text, style, onClick,
         <Box className={classes.box} style={style} onClick={onClick}>
             {text}
             {cons && (
-                <>
+                <Box display="flex" flexDirection="row" justifyContent="space-around">
                     <TimeCon days={cons?.days} />
                     <MoneyCon funding={cons?.funding} />
-                </>
+                </Box>
             )}
         </Box>
     )

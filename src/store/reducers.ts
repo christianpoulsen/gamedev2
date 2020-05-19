@@ -6,8 +6,9 @@ import { INCREASE_BUILT_LEVEL, BuildAction } from './buildActions';
 import { PICK_SUBJECT, PICK_DILEMMA, PICK_OPTION, OK_RESULT, SubjectAction, DilemmaAction, OptionAction, ResultAction, getTasksForSubject, SupportedChecks, TaskSubjects } from './taskActions';
 import { State, initialState } from './';
 import { StatsAction, UPDATE_STATS } from "./statsActions";
+import { BuyAction, BUY } from "./shopActions";
 
-export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction | BuildAction | StatsAction;
+export type ActionTypes = ViewAction | PlayerAction | SetVPAction | SubjectAction | DilemmaAction | OptionAction | ResultAction | BuildAction | StatsAction | BuyAction;
 
 export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, action) => {
     switch (action.type) {
@@ -101,28 +102,43 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                 view: gameOver ? Views.GAME_OVER : state.view,
             }
         }
-        case OK_RESULT:
+        case OK_RESULT: {
+            const happiness = state.stats.happiness + action.consequence.happiness;
+            const days = state.stats.days + action.consequence.days;
+            const funding = state.stats.funding + action.consequence.funding;
+
+            const gameOver = happiness <= 0 || days <= 0;
+
             return {
                 ...state,
                 stats: {
-                    happiness: state.stats.happiness + action.consequence.happiness,
-                    days: state.stats.days + action.consequence.days,
-                    funding: state.stats.funding + action.consequence.funding,
+                    happiness,
+                    days,
+                    funding
                 },
                 currentTask: undefined,
                 subject: undefined,
-                view: Views.HOME,
+                view: gameOver ? Views.GAME_OVER : Views.HOME,
             }
-        case INCREASE_BUILT_LEVEL:
+        }
+        case INCREASE_BUILT_LEVEL: {
+            const happiness = state.stats.happiness + action.consequence.happiness;
+            const days = state.stats.days + action.consequence.days;
+            const funding = state.stats.funding + action.consequence.funding;
+
+            const gameOver = happiness <= 0 || days <= 0;
+
             return {
                 ...state,
                 stats: {
-                    happiness: state.stats.happiness + action.consequence.happiness,
-                    days: state.stats.days + action.consequence.days,
-                    funding: state.stats.funding + action.consequence.funding,
+                    happiness,
+                    days,
+                    funding,
                 },
-                builtLevel: state.builtLevel + 1
+                builtLevel: state.builtLevel + 1,
+                view: gameOver ? Views.GAME_OVER : state.view,
             }
+        }
         case UPDATE_STATS:
             return {
                 ...state,
@@ -131,6 +147,14 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                     days: action.cons?.days ? state.stats.days + action.cons.days : state.stats.days,
                     funding: action.cons?.funding ? state.stats.funding + action.cons.funding : state.stats.funding,
                 },
+            }
+        case BUY:
+            return {
+                ...state,
+                bought: {
+                    ...state.bought,
+                    [action.shopThing]: true
+                }
             }
         default:
             return state;
