@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles, Box, BoxProps } from '@material-ui/core';
 
-import TimePng from '../assets/Time.png';
-import DollarPng from '../assets/Dollars.png';
+import TimePng from '../assets/Time.webp';
+import DollarPng from '../assets/Dollars.webp';
 
 const useStyles = makeStyles(theme => ({
     conBox: {

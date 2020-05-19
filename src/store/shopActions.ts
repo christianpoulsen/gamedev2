@@ -1,9 +1,9 @@
 import { Action } from 'redux';
 import { Consequence } from './taskActions';
 
-import CoffeeBreewerPng from '../assets/Coffee_Breewer.png';
-import SolderingPng from '../assets/Soldering.png';
-import FridgePng from '../assets/Fridge.png';
+import CoffeeBreewerPng from '../assets/Coffee_Breewer.webp';
+import SolderingPng from '../assets/Soldering.webp';
+import FridgePng from '../assets/Fridge.webp';
 
 // actions
 

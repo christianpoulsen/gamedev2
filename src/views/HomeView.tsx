@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { changeView, Views } from '../store/viewActions';
 import { pickSubject, TaskSubject, TaskSubjects } from '../store/taskActions';
 
-import VpOption2 from '../assets/Option2.png';
+import VpOption2 from '../assets/Option2.webp';
 import BigWhite, { SmallWhite } from '../components/BigWhite';
 import HomeImage from '../components/HomeImage';
 

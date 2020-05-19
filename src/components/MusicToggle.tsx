@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Box } from '@material-ui/core';
 
-import MutedPng from '../assets/muted.png';
-import UnmutedPng from '../assets/unmuted.png';
+import MutedPng from '../assets/muted.webp';
+import UnmutedPng from '../assets/unmuted.webp';
 
 import ArpBounce from '../assets/music/Arp_Bounce.mp3';
 import RainbowForest from '../assets/music/Rainbow_Forest.mp3';
@@ -21,6 +21,8 @@ const MusicToggle: React.FC = () => {
     const handleLoop = () => {
         const newCounter = counter === (audioFiles.length - 1) ? 0 : counter + 1;
         setCounter(newCounter);
+
+        console.log(newCounter, audioFiles[newCounter])
 
         audioRef.current.src = audioFiles[newCounter];
         audioRef.current.pause();

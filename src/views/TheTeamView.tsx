@@ -8,8 +8,8 @@ import Blob from '../components/Blob';
 import TeamMember from '../components/TeamMember';
 import ViewContainer from '../components/ViewContainer';
 
-import VickiPng from '../assets/VIcki.png';
-import ArthurPng from '../assets/Arthur.png';
+import VickiPng from '../assets/Vicki.webp';
+import ArthurPng from '../assets/Arthur.webp';
 
 const useStyles = makeStyles(theme => ({
     next: {

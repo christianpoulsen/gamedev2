@@ -6,7 +6,7 @@ import Blob from '../../components/Blob';
 import { useDispatch } from 'react-redux';
 import OptionBox from '../../components/OptionBox';
 
-import DollarPng from '../../assets/Dollars.png';
+import DollarPng from '../../assets/Dollars.webp';
 import SmileySvg from '../../assets/smileys/Smiley_6.svg'
 
 const useStyles = makeStyles(theme => ({

@@ -9,3 +9,9 @@ declare module '*.mp3' {
 
     export default file;
 }
+
+declare module '*.webp' {
+    const file: string;
+
+    export default file;
+}

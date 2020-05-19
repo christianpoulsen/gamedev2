@@ -8,8 +8,8 @@ import Blob from '../components/Blob';
 import {setPlayer} from '../store/playerActions';
 import {changeView, Views} from '../store/viewActions';
 
-import AndyPng from '../assets/Andy.png';
-import SofiaPng from '../assets/Sofia.png';
+import AndyPng from '../assets/Andy.webp';
+import SofiaPng from '../assets/Sofia.webp';
 
 const useStyles = makeStyles(theme => ({
     container: {

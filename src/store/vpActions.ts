@@ -1,8 +1,8 @@
 import { Action } from 'redux';
 
-import VpOption1 from '../assets/Option1.png';
-import VpOption2 from '../assets/Option2.png';
-import VpOption3 from '../assets/Option3.png';
+import VpOption1 from '../assets/Option1.webp';
+import VpOption2 from '../assets/Option2.webp';
+import VpOption3 from '../assets/Option3.webp';
 
 // actions
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Blob from './Blob';
-import ArrowPng from '../assets/Arrow.png';
+import ArrowPng from '../assets/Arrow.webp';
 
 
 interface BackButtonProperties {

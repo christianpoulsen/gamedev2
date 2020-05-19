@@ -9,7 +9,7 @@ import BigWhite from '../components/BigWhite';
 import Blob from '../components/Blob';
 import { useTypedSelector } from '../store';
 
-import SinkingShipPng from '../assets/Sinking_ship.png';
+import SinkingShipPng from '../assets/Sinking_ship.webp';
 
 export const GameOverView: React.FC = () => {
     const stats = useTypedSelector(state => state.stats);

@@ -6,7 +6,7 @@ import { yellow } from '@material-ui/core/colors';
 import ViewContainer from '../components/ViewContainer';
 import BigWhite from '../components/BigWhite';
 import { changeView, Views } from '../store/viewActions';
-import FireworksPng from '../assets/Fireworks.png';
+import FireworksPng from '../assets/Fireworks.webp';
 
 
 export const CongratzView: React.FC = () => {

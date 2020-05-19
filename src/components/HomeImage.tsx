@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, makeStyles } from '@material-ui/core';
 
-import ArthurPng from '../assets/Arthur.png';
-import VickiPng from '../assets/VIcki.png';
-import AndyPng from '../assets/Andy.png';
-import SofiaPng from '../assets/Sofia.png';
+import ArthurPng from '../assets/Arthur.webp';
+import VickiPng from '../assets/Vicki.webp';
+import AndyPng from '../assets/Andy.webp';
+import SofiaPng from '../assets/Sofia.webp';
 
-import ToolboxPng from '../assets/Toolbox.png';
-import DeskPng from '../assets/Desk.png';
-import LabSmallPng from '../assets/Lab_Small.png';
+import ToolboxPng from '../assets/Toolbox.webp';
+import DeskPng from '../assets/Desk.webp';
+import LabSmallPng from '../assets/Lab_Small.webp';
 import { useTypedSelector } from '../store';
 
 export const HomeImage: React.FC = () => {

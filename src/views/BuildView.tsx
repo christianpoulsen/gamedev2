@@ -13,7 +13,7 @@ import { BackButton } from '../components/BackButton';
 import { MoneyCon, TimeCon } from '../components/Con';
 import { build } from '../store/buildActions';
 
-import VpOption2 from '../assets/Option2.png';
+import VpOption2 from '../assets/Option2.webp';
 
 const useStyles = makeStyles(theme => ({
     transparentDiv: {
