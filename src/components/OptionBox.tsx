@@ -35,7 +35,7 @@ export const OptionBox: React.FC<OptionBoxProperties> = ({ text, style, onClick,
     const classes = useStyles({color, disabled});
 
     return (
-        <Box className={classes.box} style={style} onClick={onClick}>
+        <Box className={classes.box} style={style} onClick={disabled ? undefined : onClick}>
             {text}
             {cons && (
                 <Box display="flex" flexDirection="row" justifyContent="space-around">

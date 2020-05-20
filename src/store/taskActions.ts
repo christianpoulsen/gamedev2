@@ -31,6 +31,7 @@ export interface Task {
     text: string;
     dilemma: Dilemma;
     type: TaskTypes["TASK"];
+    cost: number;
 }
 
 export interface Dilemma {
@@ -65,6 +66,7 @@ export interface StateCheck {
     check: Check;
     yes: Dilemma | Result;
     no: Dilemma | Result;
+    type: TaskTypes["STATECHECK"]
 }
 
 export interface Result {

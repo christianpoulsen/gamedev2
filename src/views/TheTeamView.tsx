@@ -10,6 +10,7 @@ import ViewContainer from '../components/ViewContainer';
 
 import VickiPng from '../assets/Vicki.webp';
 import ArthurPng from '../assets/Arthur.webp';
+import { useTypedSelector } from '../store';
 
 const useStyles = makeStyles(theme => ({
     next: {
@@ -23,11 +24,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const letsGetStartedText = `Alright.
+const letsGetStartedText = (vpText?: string) => `Alright.
 
-A smartwatch to help parents
-keep an eye on their kids.
-Brilliant.
+${vpText}
 
 Let’s me introduce you to
 your team. Meet Vicki and
@@ -36,14 +35,16 @@ Arthur.`;
 const TheTeam: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const vp = useTypedSelector(state => state.vpState.currentVP)
   const handleNext = () => dispatch(changeView(Views.REMEMBER_THIS));
 
   return (
     <ViewContainer>
         <Box display="flex" justifyContent="center">
             <Blob color={orange[400]} size={32} className={classes.preSpace}>
-                {letsGetStartedText}
+                <div style={{ width: 248, whiteSpace: "pre-line" }}>
+                    {letsGetStartedText(vp?.text)}
+                </div>
             </Blob>
         </Box>
         <Box>

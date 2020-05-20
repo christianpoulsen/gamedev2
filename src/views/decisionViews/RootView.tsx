@@ -8,6 +8,7 @@ import Blob from '../../components/Blob';
 import BackHeader from '../../components/BackHeader';
 import { useDispatch } from 'react-redux';
 import { OptionBox } from '../../components/OptionBox';
+import { useTypedSelector } from '../../store';
 
 const useStyles = makeStyles(theme => ({
     subject: {
@@ -25,10 +26,12 @@ interface RootProps {
 export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const funding = useTypedSelector(state => state.stats.funding);
 
     const handleBack = () => dispatch(changeView(Views.HOME));
-
     const handleNext = (next: Dilemma) => () => dispatch(pickDilemma(next))
+
+    const underBudget = (task: Task) => (task.cost + funding) < 0;
 
     const color = blue[400];
 
@@ -44,7 +47,7 @@ export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
             <Typography>Options</Typography>
             <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" flexGrow={1}>
                 {decisions.map(task => (
-                    <OptionBox key={task.id} text={task.text} color={color} onClick={handleNext(task.dilemma)}/>
+                    <OptionBox key={task.id} text={task.text} color={color} disabled={underBudget(task)} onClick={handleNext(task.dilemma)}/>
                 ))}
             </Box>
         </>

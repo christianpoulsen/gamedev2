@@ -1,5 +1,8 @@
 import papaparse from 'papaparse';
 import { Task, Tasks, Dilemma, Option, Result, StateCheck, SupportedChecks, Check } from "../store/taskActions";
+import costParser from './costParser';
+
+export type TaskWithoutCost = Omit<Task, "cost">;
 
 export const dataParser = (csvString: string) => {
 
@@ -129,14 +132,14 @@ export const dataParser = (csvString: string) => {
         }
     }
 
-    const dataTree: Task[] = tasks.map(json => ({
+    const dataTree: TaskWithoutCost[] = tasks.map(json => ({
         id: json["Id"],
         text: json["Text"],
         type: Tasks.TASK,
         dilemma: getDilemma(json["Next 1"]),
     }))
 
-    return dataTree;
+    return costParser(dataTree);
 }
 
 export default dataParser;
