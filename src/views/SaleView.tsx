@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Dilemma, Option, pickOption } from '../store/taskActions';
-import { Box, makeStyles, Typography } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import getRandomMUIColor from '../helpers/getRandomMUIColor';
-import fullfillsStateCheck from '../helpers/fullfillsStateCheck';
-import isStateCheck from '../helpers/isStateCheck';
 import { useTypedSelector } from '../store';
 import OptionBox from '../components/OptionBox';
 import Blob from '../components/Blob';
-import { pink, green } from '@material-ui/core/colors';
+import { pink } from '@material-ui/core/colors';
 import ViewContainer from '../components/ViewContainer';
 import InfoBar from '../components/InfoBar';
 import { BackButton } from '../components/BackButton';
-import BigWhite, { SmallWhite } from '../components/BigWhite';
+import BigWhite from '../components/BigWhite';
 import { changeView, Views } from '../store/viewActions';
 import { updateStats } from '../store/statsActions';
 

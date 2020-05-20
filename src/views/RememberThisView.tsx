@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Box, Typography } from '@material-ui/core';
+import { makeStyles, Box } from '@material-ui/core';
 import { orange, green } from '@material-ui/core/colors';
 import { useDispatch } from 'react-redux';
 
@@ -7,7 +7,7 @@ import Blob from '../components/Blob';
 import ViewContainer from '../components/ViewContainer';
 import { changeView, Views } from '../store/viewActions';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     next: {
         display: 'flex',
         justifyContent: 'center'

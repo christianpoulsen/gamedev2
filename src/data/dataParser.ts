@@ -7,7 +7,7 @@ export type TaskWithoutCost = Omit<Task, "cost">;
 export const dataParser = (csvString: string) => {
 
     const parsedData = papaparse.parse(csvString).data;
-    console.log("Parsed Data:", parsedData);
+    // console.log("Parsed Data:", parsedData);
 
     const headers: string[] = parsedData[0];
 
@@ -23,11 +23,11 @@ export const dataParser = (csvString: string) => {
     const results: Array<{ [key: string]: string }> = parsedData.filter((row: string[]) => row[2] === Tasks.RESULT).map(arrayToJson);
     const stateChecks: Array<{ [key: string]: string }> = parsedData.filter((row: string[]) => row[2] === Tasks.STATECHECK).map(arrayToJson);
 
-    console.log("Tasks:", tasks);
-    console.log("Dilemmas:", dilemmas);
-    console.log("Options:", options);
-    console.log("Results:",results);
-    console.log("StateChecks:", stateChecks);
+    // console.log("Tasks:", tasks);
+    // console.log("Dilemmas:", dilemmas);
+    // console.log("Options:", options);
+    // console.log("Results:",results);
+    // console.log("StateChecks:", stateChecks);
 
     const checkSupportedCheck = (stateCheck: string): Check => {
         switch (stateCheck) {
@@ -41,7 +41,7 @@ export const dataParser = (csvString: string) => {
     }
 
     const getStateCheck = (id: string): StateCheck => {
-        console.log("Get Result", id);
+        // console.log("Get Result", id);
         const stateCheck = stateChecks.find(json => json["Id"] === id);
 
         if (stateCheck) {
@@ -66,7 +66,7 @@ export const dataParser = (csvString: string) => {
     }
 
     const getResult = (id: string): Result => {
-        console.log("Get Result", id);
+        // console.log("Get Result", id);
         const result = results.find(json => json["Id"] === id);
 
         
@@ -86,7 +86,7 @@ export const dataParser = (csvString: string) => {
     }
 
     const getOption = (id: string): Option => {
-        console.log("Get Option", id);
+        // console.log("Get Option", id);
         const option = options.find(json => json["Id"] === id);
 
         if (option) {
@@ -94,8 +94,8 @@ export const dataParser = (csvString: string) => {
             const result = results.find(json => json["Id"] === option["Next 1"]);
             const stateCheck = stateChecks.find(json => json["Id"] === option["Next 1"]);
 
-            console.log(option);
-            console.log(dilemma, result, stateCheck);
+            // console.log(option);
+            // console.log(dilemma, result, stateCheck);
 
             const next: Dilemma | Result | StateCheck | undefined = dilemma ? getDilemma(dilemma["Id"]) : result ? getResult(result["Id"]) : stateCheck ? getStateCheck(stateCheck["Id"]) : undefined;
 
@@ -116,7 +116,7 @@ export const dataParser = (csvString: string) => {
     }
 
     const getDilemma = (id: string): Dilemma => {
-        console.log("Get Dilemma", id);
+        // console.log("Get Dilemma", id);
         const dilemma = dilemmas.find(json => json["Id"] === id);
 
         if (dilemma) {

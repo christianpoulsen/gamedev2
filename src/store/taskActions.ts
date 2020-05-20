@@ -82,6 +82,7 @@ export interface TaskSubjectTypes {
     readonly SOCIALIZE: "SOCIALIZE";
     readonly ANALYZE: "ANALYZE";
     readonly PRETOTYPE: "PRETOTYPE";
+    readonly ADMINISTRATIVE: "ADMINISTRATIVE";
 }
 export const TaskSubjects: TaskSubjectTypes = {
     FUNDING: "FUNDING",
@@ -89,6 +90,7 @@ export const TaskSubjects: TaskSubjectTypes = {
     SOCIALIZE: "SOCIALIZE",
     ANALYZE: "ANALYZE",
     PRETOTYPE: "PRETOTYPE",
+    ADMINISTRATIVE: "ADMINISTRATIVE",
 }
 export type TaskSubject = keyof TaskSubjectTypes;
 
@@ -156,6 +158,8 @@ export const getTasksForSubject = (subject: TaskSubject, taskMap: State["tasks"]
             return taskMap.socialize;
         case TaskSubjects.ANALYZE:
             return taskMap.analyze;
+        case TaskSubjects.ADMINISTRATIVE:
+            return taskMap.administrative;
         default:
             return [];
     }

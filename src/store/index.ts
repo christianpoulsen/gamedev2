@@ -5,8 +5,8 @@ import { ValueProposition, initialVps } from './vpActions';
 import { Task, Dilemma, Result, TaskSubject, SupportedChecks } from './taskActions';
 import rootReducer from './reducers';
 
-import { fundingTasks, socializeTasks,analyzeTasks, pretotypeTasks, talkToCustomersTasks } from '../data';
-import { ShopThing, shopThings } from './shopActions';
+import { fundingTasks, socializeTasks,analyzeTasks, pretotypeTasks, talkToCustomersTasks, administrativeTasks } from '../data';
+import { shopThings } from './shopActions';
 
 export interface State {
     view: View;
@@ -23,6 +23,7 @@ export interface State {
         socialize: Task[];
         pretotype: Task[];
         analyze: Task[];
+        administrative: Task[];
     };
     subject?: TaskSubject | "TALK TO\nCUSTOMERS";
     decisions?: Task[];
@@ -39,7 +40,8 @@ export interface State {
     prerequisiteState: {
         foundersFunding: Task;
         foundersFundingPickCount: number;
-        fffFunding: Task
+        fffFunding: Task;
+        registerCompany: Task;
     },
     builtLevel: number;
     bought: {
@@ -64,6 +66,7 @@ export const initialState: State = {
         socialize: socializeTasks,
         pretotype: pretotypeTasks,
         analyze: analyzeTasks,
+        administrative: administrativeTasks,
     },
     subject: undefined,
     decisions: undefined,
@@ -81,6 +84,7 @@ export const initialState: State = {
         foundersFunding: fundingTasks[0],
         foundersFundingPickCount: 0,
         fffFunding: fundingTasks[1],
+        registerCompany: administrativeTasks[0],
     },
     builtLevel: 0,
     bought: {

@@ -40,7 +40,7 @@ export const ResultView: React.FC<ResultViewProps> = ({ result }) => {
         dispatch(okResult(result.consequence));
     }
 
-    const {happiness, days, funding} = result.consequence;
+    const {happiness, funding} = result.consequence;
 
     const color = getRandomMUIColor()[300];
 

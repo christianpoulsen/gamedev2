@@ -63,7 +63,7 @@ const Home: React.FC = () => {
                 <Blob color={orange[200]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.ANALYZE)}>
                 <BigWhite>ANALYZE</BigWhite>
                 </Blob>
-                <Blob color={green[400]} size={12}>
+                <Blob color={green[400]} size={12} onClick={handleTaskSubjectClick(TaskSubjects.ADMINISTRATIVE)}>
                     <Box display="flex" flexDirection="column">
                         <BigWhite>ADMINI-</BigWhite>
                         <BigWhite>STRATIVE</BigWhite>

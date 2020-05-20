@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import { lightBlue } from '@material-ui/core/colors'
 
-import IntroMusic from '../assets/music/If_I_Had_a_Chicken.mp3';
 import MusicToggle from './MusicToggle';
 
 const useStyles = makeStyles(theme => ({
@@ -19,8 +18,6 @@ const useStyles = makeStyles(theme => ({
 
 const ViewHeader: React.FC = () => {
   const classes = useStyles();
-
-  const a = new Audio(IntroMusic);
 
   return (
     <div className={classes.header}>

@@ -73,6 +73,9 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                 funding.filter(task => task.id !== founders.id) : 
                     isFffFunding ? funding.filter(task => task.id !== fffFunding.id) : 
                         funding;
+
+            const isRegisteringCompany = action.dilemma.id === state.prerequisiteState.registerCompany.dilemma.id;
+
             return {
                 ...state,
                 tasks: {
@@ -82,6 +85,10 @@ export const rootReducer: Reducer<State, ActionTypes> = (state = initialState, a
                 currentTask: action.dilemma,
                 decisions: undefined,
                 foundersFundingPickCount,
+                checks: {
+                    ...state.checks,
+                    [SupportedChecks.REGISTERED_COMPANY]: isRegisteringCompany ? true : state.checks[SupportedChecks.REGISTERED_COMPANY],
+                }
             }
         }
         case PICK_OPTION: {
