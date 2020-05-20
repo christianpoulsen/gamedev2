@@ -38,9 +38,9 @@ const RememberThis: React.FC = () => {
             </Blob>
         </Box>
         <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
-                <b>Your overall goal is to sell a smartwatch to a customer. If you succeed you’ll win.</b>
+            <b>Your overall goal is to sell a smartwatch to a customer. If you succeed you’ll win.</b>
 
-                <span>To sell a smartwatch, you need to build it first. It takes around 4-5 months to build a watch.</span>
+            <span>To sell a smartwatch, you need to build it first. It takes around 4-5 months to build a watch.</span>
             <span>
                 The faster you build a smartwatch and make a sale, the better you’ll score.
             </span>

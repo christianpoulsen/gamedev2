@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 const letsGetStartedText = (player: string) => `Well, Hello ${player}.
 Let’s get started. You and your
 team came up with this brilliant
-idea.
+idea:
 
 A SMARTWATCH FOR KIDS.
 

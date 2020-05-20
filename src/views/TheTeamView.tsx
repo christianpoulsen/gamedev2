@@ -28,7 +28,7 @@ const letsGetStartedText = (vpText?: string) => `Alright.
 
 ${vpText}
 
-Let’s me introduce you to
+Let me introduce you to
 your team. Meet Vicki and
 Arthur.`;
 

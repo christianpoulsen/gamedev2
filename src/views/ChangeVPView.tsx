@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
-import { green, lightBlue } from '@material-ui/core/colors';
+import { Box, Typography, makeStyles } from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
 import { useDispatch } from 'react-redux';
 
 import Blob from '../components/Blob';
@@ -9,11 +9,26 @@ import ViewContainer from '../components/ViewContainer';
 import { ValueProposition as VPType, setVP } from '../store/vpActions';
 import { Views, changeView } from '../store/viewActions';
 import { useTypedSelector } from '../store';
-import { BackButton } from '../components/BackButton';
+import BackHeader from '../components/BackHeader';
+import { SmallWhite } from '../components/BigWhite';
+
+const useStyles = makeStyles(theme => ({
+  box: {
+    display: 'flex',
+    justifyContent: 'center',
+    borderBlockWidth: 2,
+    borderStyle: 'solid',
+    borderRadius: theme.spacing(1),
+    fontSize: 18,
+    textAlign: 'center',
+    padding: theme.spacing(3, 2),
+}
+}))
 
 const ChangeVPView: React.FC = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
-  const {player, vpState} = useTypedSelector(state => state);
+  const vpState = useTypedSelector(state => state.vpState);
 
   const handleBack = () => dispatch(changeView(Views.BUILD));
 
@@ -24,13 +39,21 @@ const ChangeVPView: React.FC = () => {
 
   return (
     <ViewContainer>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-            <BackButton color={green[300]} onClick={handleBack} />
-        </Box>
-        <Box display="flex" justifyContent="center">
-            <Blob size={32} color={lightBlue[300]}>
-                <Typography variant="h5" color="inherit">{`Alright ${player}, what kind of smartwatch do you want to work on now?`}</Typography>
+        <BackHeader 
+          color={green[300]} 
+          header={
+            <Blob size={14} color={green[300]} >
+                <Typography variant="body1">
+                    <SmallWhite>
+                        {"BUILD A\nDIFFERENT\nSMART-\nWATCH"}
+                    </SmallWhite>
+                </Typography>
             </Blob>
+          } 
+          onBack={handleBack}
+          />
+        <Box className={classes.box} style={{ borderColor: green[300] }}>
+                Pivot and start building a different smartwatch
         </Box>
         <Box pt={4}>
           {vpState.vps.filter(vp => vp.text !== vpState.currentVP?.text).map((vp, i) => (

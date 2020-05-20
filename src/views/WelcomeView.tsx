@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const welcomeText = `Welcome to THE STARTUP
+const welcomeText = `WELCOME TO THE STARTUP
 SIMULATOR
 
 Nice of you to FINALLY join. We are
@@ -43,7 +43,7 @@ our competitors.
 
 So let’s get started.
 
-First of all though.
+First of all.
 Select a character:`;
 
 const Welcome: React.FC = () => {
