@@ -37,6 +37,8 @@ const useStyles = makeStyles(theme => ({
         height: theme.spacing(6),
         marginTop: theme.spacing(-7),
         marginLeft: theme.spacing(-4),
+        WebkitMarginBefore: `${theme.spacing(-3.5)}px`,
+        WebkitMarginStart: `${theme.spacing(-2.5)}px`,
     }
 }))
 

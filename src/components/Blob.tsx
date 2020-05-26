@@ -14,11 +14,12 @@ const useStyles = makeStyles<Theme, { size: number, color: string }>(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    color: ({ color }) => theme.palette.getContrastText(color),
     whiteSpace: 'normal',
+    pointerEvents: 'none',
+    wordBreak: "break-word",
+    color: ({ color }) => theme.palette.getContrastText(color),
     height: ({ size }) => size,
     width: ({ size }) => size,
-    pointerEvents: 'none',
   }
 }));
 

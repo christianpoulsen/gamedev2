@@ -9,12 +9,13 @@ import { useDispatch } from 'react-redux';
 import { changeView, Views } from '../store/viewActions';
 import { pickSubject, TaskSubject, TaskSubjects } from '../store/taskActions';
 
-import VpOption2 from '../assets/Option2.webp';
 import BigWhite, { SmallWhite } from '../components/BigWhite';
 import HomeImage from '../components/HomeImage';
+import { useTypedSelector } from '../store';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+  const currentVp = useTypedSelector(state => state.vpState.currentVP);
 
   const handleBuildClick = () => dispatch(changeView(Views.BUILD));
 
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
             <Blob color={green[400]} size={16} onClick={handleBuildClick}>
                 <Box display="flex" flexDirection="column" >
                     <BigWhite>BUILD</BigWhite>
-                    <img src={VpOption2} alt="img" style={{ height: 64 }} />
+                    <img src={currentVp?.img} alt="img" height={64} />
                 </Box>
             </Blob>
             <Blob color={teal[200]} size={10} onClick={() => dispatch(changeView(Views.SHOP))}>

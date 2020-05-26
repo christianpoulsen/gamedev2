@@ -44,7 +44,6 @@ export const RootView: React.FC<RootProps> = ({ subject, decisions }) => {
                 <div style={{width: 48}} />
             </BackHeader>
             
-            <Typography>Options</Typography>
             <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" flexGrow={1}>
                 {decisions.map(task => (
                     <OptionBox key={task.id} text={task.text} color={color} disabled={underBudget(task)} onClick={handleNext(task.dilemma)}/>

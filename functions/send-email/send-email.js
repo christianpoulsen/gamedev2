@@ -2,7 +2,8 @@ const nodemailer = require("nodemailer");
 
 exports.handler = async (event, context) => {
   try {
-    const feedback = event.queryStringParameters.feedback
+    const experience = event.queryStringParameters.experience ?? 0;
+    const feedback = event.queryStringParameters.feedback;
 
     if (feedback) {
 
@@ -17,12 +18,14 @@ exports.handler = async (event, context) => {
           }
         });
 
+        const message = `Experience: ${experience}\nFeedback: ${feedback}`;
+
         // send mail with defined transport object
         const info = await transporter.sendMail({
           from: '"Feedback" <gamedev@christianpoulsen.com>', // sender address
-          to: "mail@christianpoulsen.dk", // list of receivers
+          to: "madsv@dtu.dk", // list of receivers
           subject: "Serious Entrepreneurship Game Feedback", // Subject line
-          text: feedback, // plain text body
+          text: message, // plain text body
         });
 
         return {

@@ -34,11 +34,15 @@ const useStyles = makeStyles(theme => ({
 export const ShopView: React.FC = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const bought = useTypedSelector(state => state.bought);
+    const {bought, stats} = useTypedSelector(state => state);
+
+    const canPay = (shopOption: ShopOption) => stats.funding + shopOption.cons.funding >= 0;
 
     const handleBuy = (shopOption: ShopOption) => () => {
-        dispatch(buyThing(shopOption.id));
-        dispatch(updateStats(shopOption.cons))
+        if (canPay(shopOption)) {
+            dispatch(buyThing(shopOption.id));
+            dispatch(updateStats(shopOption.cons))
+        }
     }
 
     return (
@@ -52,7 +56,7 @@ export const ShopView: React.FC = () => {
                 } 
                 onBack={() => dispatch(changeView(Views.HOME))}
             />
-            {initialShopOptions.map(so => (
+            {initialShopOptions.filter(so => !bought[so.id]).map(so => (
                 <Box className={classes.shopOption}>
                     <Box className={classes.shopOptionImg}>
                         <img src={so.img} alt={so.id.toLocaleLowerCase() + "image"}  />
@@ -62,7 +66,7 @@ export const ShopView: React.FC = () => {
                         color={teal[200]} 
                         cons={so.cons} 
                         style={{ fontSize: 14 }} 
-                        disabled={bought[so.id]}
+                        disabled={!canPay(so)}
                         onClick={handleBuy(so)}
                     />
                 </Box>

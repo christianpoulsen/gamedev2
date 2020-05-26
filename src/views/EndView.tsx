@@ -33,17 +33,14 @@ export const EndView: React.FC = () => {
 
     const handlePlayAgain = () => {
         if (feedback || experience) {
-            const message = `Experience: ${experience}
-Feedback: ${feedback}
-            `
-            handleSubmit(message);
+            handleSubmit(experience, feedback);
         }
         // eslint-disable-next-line no-restricted-globals
         location.reload();
     }
 
-    const handleSubmit = async (message: string) => {
-        await fetch("https://gamedev2.netlify.app/.netlify/functions/send-email?feedback=" + message);
+    const handleSubmit = async (experience: number, message: string) => {
+        await fetch("https://gamedev2.netlify.app/.netlify/functions/send-email?experience=" + experience + "&feedback=" + message);
     }
 
     return (
