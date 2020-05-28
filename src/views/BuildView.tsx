@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 const Build: React.FC = () => {
   const classes = useStyles();
   const vp = useTypedSelector(state => state.vpState.currentVP);
-  const { stats, builtLevel, bought } = useTypedSelector(state => state);
+  const { stats, builtLevel, bought, vpState: { currentVP } } = useTypedSelector(state => state);
   const dispatch = useDispatch();
 
   const handleBack = () => dispatch(changeView(Views.HOME));
@@ -49,7 +49,7 @@ const Build: React.FC = () => {
             <Blob size={16} color={green[300]}>
                 <Box display="flex" flexDirection="column" >
                     <BigWhite>BUILD</BigWhite>
-                    <img src={VpOption2} alt="img" style={{ height: 64 }} />
+                    <img src={currentVP?.img} alt="img" style={{ height: 64 }} />
                 </Box>
             </Blob>
             <Blob size={14} color={green[300]} onClick={handlePickNewVP}>
