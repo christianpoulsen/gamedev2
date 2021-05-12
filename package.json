@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.8",
     "@types/react-audio-player": "^0.11.0",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "papaparse": "^5.2.0",
     "react": "^16.13.1",
     "react-audio-player": "^0.13.0",
